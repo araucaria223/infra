@@ -27,7 +27,7 @@
         enable_audio_bell = false;
         disable_ligatures = "never";
 
-        window_padding_width = 10;
+        window_padding_width = 5;
         confirm_os_window_close = 0;
 
         background = palette.base00;
