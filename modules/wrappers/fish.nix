@@ -11,6 +11,8 @@
     imports = [wlib.wrapperModules.fish];
     runtimePkgs = [pkgs.zoxide];
 
+    plugins = [pkgs.fishPlugins.hydro];
+
     shellAliases = rec {
       ls = "${lib.getExe pkgs.eza} --icons --follow-symlinks";
       lst = "${ls} --tree --icons";
@@ -44,11 +46,6 @@
     configFile.content =
       # fish
       ''
-        function fish_prompt
-            string join "" -- (set_color red) "[" (set_color yellow) $USER (set_color green) "@" (set_color blue) $hostname (set_color magenta) " " $(prompt_pwd) (set_color red) ']' (set_color normal) (fish_git_prompt)"\$ "
-        end
-
-        set fish_greeting
         fish_vi_key_bindings
 
         ${lib.getExe pkgs.zoxide} init fish | source
