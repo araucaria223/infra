@@ -11,7 +11,16 @@
     imports = [wlib.wrapperModules.fish];
     runtimePkgs = [pkgs.zoxide];
 
-    plugins = [pkgs.fishPlugins.pure];
+    plugins = with pkgs.fishPlugins; [
+      pure
+      async-prompt
+      autopair
+      #bobthefisher
+      colored-man-pages
+      done
+      fish-you-should-use
+      bang-bang
+    ];
 
     shellAliases = rec {
       ls = "${lib.getExe pkgs.eza} --icons --follow-symlinks";
