@@ -1,6 +1,7 @@
 {
   self,
   moduleWithSystem,
+  lib,
   ...
 }: {
   flake.modules.generic.library.library.allowedUnfreePackages = ["stremio-linux-shell"];
@@ -13,6 +14,14 @@
       self.modules.nixos.wireless
       self.modules.nixos.bluetooth
     ];
+
+    services.greetd = {
+      enable = true;
+      settings.default_session = {
+        command = lib.getExe' self'.packages.desktop "niri-session";
+	user = config.users.users.araucaria.name;
+      };
+    };
 
     programs.niri = {
       enable = true;
