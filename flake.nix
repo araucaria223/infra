@@ -15,6 +15,10 @@
     };
     hjem.url = "github:feel-co/hjem";
     import-tree.url = "github:vic/import-tree";
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     noctalia-plugins = {
