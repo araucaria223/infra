@@ -28,6 +28,10 @@
       package = self'.packages.desktop;
     };
 
+    environment.systemPackages = with pkgs; [
+      kitty
+    ];
+
     programs.firefox.enable = true;
 
     services = {
