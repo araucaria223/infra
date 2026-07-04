@@ -9,7 +9,7 @@
     ...
   }: {
     imports = [wlib.wrapperModules.fish];
-    runtimePkgs = [pkgs.zoxide];
+    runtimePkgs = with pkgs; [zoxide devenv];
 
     plugins = with pkgs.fishPlugins; [
       pure
@@ -54,9 +54,7 @@
 
         ${lib.getExe pkgs.zoxide} init fish | source
 
-        if type -q direnv
-          direnv hook fish | source
-        end
+        devenv hook fish | source
       '';
   });
 }
