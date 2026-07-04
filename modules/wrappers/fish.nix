@@ -30,14 +30,10 @@
 
     abbreviations = {
       d = "cd ~/Downloads";
-      infracd = {
+      infra = {
         word = "infra";
         expansion = "cd ~/Projects/infra";
         position = "command";
-      };
-      infra = {
-        expansion = "~/Projects/infra";
-        command = "*";
       };
 
       find-extension = {
