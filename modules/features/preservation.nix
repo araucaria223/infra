@@ -25,7 +25,7 @@
           {
             directory = "/tmp";
             mode = "1777";
-            mountOptions = ["noexec" "nodev"];
+            mountOptions = ["nodev"];
           }
           {
             directory = "/var/lib/nixos";
