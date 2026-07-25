@@ -55,7 +55,10 @@
         }
       ];
 
-      users.${config.users.users.araucaria.name}.directories = [];
+      users.${config.users.users.araucaria.name}.directories = [
+        ".stremio-server"
+	".local/share/stremio"
+      ];
     };
 
     environment.sessionVariables = {
