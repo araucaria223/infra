@@ -21,6 +21,7 @@
     };
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
     noctalia-plugins = {
       url = "github:noctalia-dev/noctalia-plugins";
       flake = false;
