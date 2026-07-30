@@ -1,5 +1,8 @@
-{
+{self, ...}: {
   flake.modules.nixos.wireless = {...}: {
+    imports = [
+      self.modules.nixos.mullvad-vpn
+    ];
     networking.networkmanager = {
       enable = true;
       wifi.powersave = true;
