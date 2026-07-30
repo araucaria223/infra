@@ -20,7 +20,7 @@
         ];
 
         directories = [
-          "/var/lib/systemd/timers"
+          "/var/lib/systemd"
           "/var/log"
           {
             directory = "/tmp";

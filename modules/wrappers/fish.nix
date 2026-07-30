@@ -22,7 +22,7 @@
       bang-bang
     ];
 
-    shellAliases = rec {
+    shellAliases = {
       ls = "${lib.getExe pkgs.eza} --icons --follow-symlinks";
       cat = "${lib.getExe pkgs.bat} --theme=base16";
       v = lib.getExe self'.packages.neovim;

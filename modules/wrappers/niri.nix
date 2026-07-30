@@ -28,14 +28,18 @@
     };
 
     config.settings = let
-      noctalia = lib.getExe perSystem.self'.packages.noctalia;
-      polkit-auth = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+      noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
+      mullvad = lib.getExe pkgs.mullvad-vpn;
+      #polkit-auth = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
     in {
       xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-      spawn-at-startup = [polkit-auth noctalia];
+      spawn-at-startup = [noctalia mullvad];
 
       hotkey-overlay.skip-at-startup = _: {};
+      debug = {
+        honor-xdg-activation-with-invalid-serial = _: {};
+      };
 
       input = {
         keyboard.xkb.layout = "us";
@@ -70,6 +74,17 @@
           urgent-color = base0C;
         };
       };
+
+      window-rules = [
+        {
+	  matches = [
+	    { app-id = "dev.noctalia.Noctalia"; }
+	  ];
+	  open-floating = true;
+	  default-column-width = {fixed = 1080;};
+	  default-window-height = {fixed = 920;};
+	}
+      ];
 
       binds = let
         bind = title: content: _: {
@@ -106,11 +121,11 @@
             _ = _: {};
           });
 
-        ipc = args: [noctalia "ipc" "call"] ++ args;
+        ipc = args: [noctalia "msg"] ++ args;
       in
         {
           "Mod+Space" = norepeat "Launcher" {
-            spawn = ipc ["launcher" "toggle"];
+            spawn = ipc ["panel-toggle" "launcher"];
           };
 
           "Mod+Return" = norepeat "Terminal" {
@@ -124,12 +139,12 @@
                 {
                   key = "b";
                   desc = "Bluetooth";
-                  cmd = "${noctalia} ipc call bluetooth togglePanel";
+                  cmd = "${noctalia} msg panel-toggle control-center bluetooth";
                 }
                 {
                   key = "w";
                   desc = "Wifi";
-                  cmd = "${noctalia} ipc call network togglePanel";
+                  cmd = "${noctalia} msg panel-toggle control-center network";
                 }
                 {
                   key = "f";
@@ -141,31 +156,31 @@
           };
 
           "Mod+Shift+L" = norepeat "Lock screen" {
-            spawn = ipc ["lockScreen" "lock"];
+            spawn = ipc ["session" "lock"];
           };
 
           "XF86AudioRaiseVolume" = locked "Raise volume" {
-            spawn = ipc ["volume" "increase"];
+            spawn = ipc ["volume-up"];
           };
 
           "XF86AudioLowerVolume" = locked "Lower volume" {
-            spawn = ipc ["volume" "decrease"];
+            spawn = ipc ["volume-down"];
           };
 
           "XF86AudioMute" = locked "Mute playback" {
-            spawn = ipc ["volume" "muteOutput"];
+            spawn = ipc ["volume-mute"];
           };
 
           "XF86MonBrightnessUp" = locked "Increase brightness" {
-            spawn = ipc ["brightness" "increase"];
+            spawn = ipc ["brightness-up"];
           };
 
           "XF86MonBrightnessDown" = locked "Decrease brightness" {
-            spawn = ipc ["brightness" "decrease"];
+            spawn = ipc ["brightness-down"];
           };
 
           "Mod+W" = norepeat "Window switcher" {
-            spawn = ipc ["launcher" "windows"];
+            spawn = ipc ["window-switcher"];
           };
 
           "Mod+Q" = norepeat "Close window" {

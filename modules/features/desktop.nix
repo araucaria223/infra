@@ -19,7 +19,7 @@
       enable = true;
       settings.default_session = {
         command = lib.getExe' self'.packages.desktop "niri-session";
-	user = config.users.users.araucaria.name;
+        user = config.users.users.araucaria.name;
       };
     };
 
@@ -28,8 +28,8 @@
       package = self'.packages.desktop;
     };
 
-    environment.systemPackages = with pkgs; [
-      kitty
+    environment.systemPackages = [
+      self'.packages.kitty
     ];
 
     programs.firefox.enable = true;
@@ -57,7 +57,7 @@
 
       users.${config.users.users.araucaria.name}.directories = [
         ".stremio-server"
-	".local/share/stremio"
+        ".local/share/stremio"
       ];
     };
 
