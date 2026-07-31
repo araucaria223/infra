@@ -29,6 +29,7 @@
 
     config.settings = let
       noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
+      ipc = args: [noctalia "msg"] ++ args;
       mullvad = lib.getExe pkgs.mullvad-vpn;
       #polkit-auth = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
     in {
@@ -95,6 +96,12 @@
 	}
       ];
 
+      switch-events = {
+        lid-close = {
+	  spawn = ipc ["session" "lock-and-suspend"];
+	};
+      };
+
       binds = let
         bind = title: content: _: {
           props.hotkey-overlay-title = title;
@@ -130,7 +137,6 @@
             _ = _: {};
           });
 
-        ipc = args: [noctalia "msg"] ++ args;
       in
         {
           "Mod+Space" = norepeat "Launcher" {
