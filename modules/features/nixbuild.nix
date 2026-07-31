@@ -4,7 +4,7 @@
       Host eu.nixbuild.net
       PubkeyAcceptedKeyTypes ssh-ed25519
       ServerAliveInterval 60
-      IdentityFile /home/araucaria/.ssh/id_ed25519
+      IdentityFile /etc/ssh/ssh_host_ed25519_key
     '';
 
     programs.ssh.knownHosts = {
