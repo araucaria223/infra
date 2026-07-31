@@ -86,6 +86,15 @@
 	}
       ];
 
+      layer-rules = [
+        {
+	  matches = [
+	    { namespace = "^noctalia-backdrop"; }
+	  ];
+	  place-within-backdrop = true;
+	}
+      ];
+
       binds = let
         bind = title: content: _: {
           props.hotkey-overlay-title = title;
