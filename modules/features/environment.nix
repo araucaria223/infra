@@ -12,6 +12,7 @@
     imports = [
       self.modules.nixos.ssh
       inputs.nix-index-database.nixosModules.nix-index
+      self.modules.nixos.nixbuild
     ];
 
     programs.nix-index-database.comma.enable = true;
