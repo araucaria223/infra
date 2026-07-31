@@ -179,10 +179,6 @@
             spawn = ipc ["brightness-down"];
           };
 
-          "Mod+W" = norepeat "Window switcher" {
-            spawn = ipc ["window-switcher"];
-          };
-
           "Mod+Q" = norepeat "Close window" {
             close-window = _: {};
           };
