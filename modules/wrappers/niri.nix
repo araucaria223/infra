@@ -78,28 +78,28 @@
 
       window-rules = [
         {
-	  matches = [
-	    { app-id = "dev.noctalia.Noctalia"; }
-	  ];
-	  open-floating = true;
-	  default-column-width = {fixed = 1080;};
-	  default-window-height = {fixed = 920;};
-	}
+          matches = [
+            {app-id = "dev.noctalia.Noctalia";}
+          ];
+          open-floating = true;
+          default-column-width = {fixed = 1080;};
+          default-window-height = {fixed = 920;};
+        }
       ];
 
       layer-rules = [
         {
-	  matches = [
-	    { namespace = "^noctalia-backdrop"; }
-	  ];
-	  place-within-backdrop = true;
-	}
+          matches = [
+            {namespace = "^noctalia-backdrop";}
+          ];
+          place-within-backdrop = true;
+        }
       ];
 
       switch-events = {
         lid-close = {
-	  spawn = ipc ["session" "lock-and-suspend"];
-	};
+          spawn = ipc ["session" "lock-and-suspend"];
+        };
       };
 
       binds = let
@@ -136,7 +136,6 @@
           (lib.mapAttrs' (_n: v: lib.nameValuePair "${action}-${obj}-${direction}" v) {
             _ = _: {};
           });
-
       in
         {
           "Mod+Space" = norepeat "Launcher" {
