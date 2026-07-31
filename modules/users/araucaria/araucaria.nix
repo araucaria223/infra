@@ -45,6 +45,16 @@
               mode = "0755";
             };
           }
+
+          {
+            directory = ".local/share/keyrings";
+            configureParent = true;
+            parent = {
+              user = config.users.users.araucaria.name;
+              group = "users";
+              mode = "0755";
+            };
+          }
         ];
       };
     }
