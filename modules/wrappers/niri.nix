@@ -173,6 +173,10 @@
             spawn = ipc ["session" "lock"];
           };
 
+	  "Mod+Shift+P" = norepeat "Power menu" {
+	    spawn = ipc ["panel-toggle" "session"];
+	  };
+
           "XF86AudioRaiseVolume" = locked "Raise volume" {
             spawn = ipc ["volume-up"];
           };
