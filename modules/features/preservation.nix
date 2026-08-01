@@ -22,7 +22,7 @@
         directories = [
           "/var/lib/systemd"
           "/var/log"
-	  "/etc/ssh"
+          "/etc/ssh"
           {
             directory = "/tmp";
             mode = "1777";
