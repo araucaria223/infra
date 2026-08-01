@@ -1,6 +1,8 @@
 {moduleWithSystem, ...}: {
   flake.modules.nixos.araucaria = moduleWithSystem (
     {self', ...}: {config, ...}: {
+      services.userborn.enable = true;
+
       users = {
         mutableUsers = false;
         users.araucaria = {
