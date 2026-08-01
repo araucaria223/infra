@@ -1,15 +1,19 @@
 {moduleWithSystem, ...}: {
   flake.modules.nixos.araucaria = moduleWithSystem (
     {self', ...}: {config, ...}: {
-      users.users.araucaria = {
-        name = "araucaria";
-        isNormalUser = true;
-        initialPassword = "password1";
-        extraGroups = ["wheel"];
-        shell = self'.packages.environment;
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTNS3bsK/k/svOc8YCIvahRTOViOZXEcUX3ctgWlxGa max.allfrey@gmail.com"
-        ];
+      users = {
+        mutableUsers = false;
+        users.araucaria = {
+          name = "araucaria";
+          isNormalUser = true;
+          initialPassword = "password1";
+          hashedPasswordFile = "/persistent/passwd";
+          extraGroups = ["wheel"];
+          shell = self'.packages.environment;
+          openssh.authorizedKeys.keys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTNS3bsK/k/svOc8YCIvahRTOViOZXEcUX3ctgWlxGa max.allfrey@gmail.com"
+          ];
+        };
       };
 
       hjem.users.araucaria = {
