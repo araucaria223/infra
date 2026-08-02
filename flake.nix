@@ -15,6 +15,10 @@
     };
     hjem.url = "github:feel-co/hjem";
     import-tree.url = "github:vic/import-tree";
+    nix-auto-follow = {
+      url = "github:fzakaria/nix-auto-follow";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
