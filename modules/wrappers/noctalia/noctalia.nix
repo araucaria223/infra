@@ -4,11 +4,6 @@
   self,
   ...
 }: {
-  flake-file.inputs.noctalia-plugins = {
-    url = "github:noctalia-dev/noctalia-plugins";
-    flake = false;
-  };
-
   flake.wrappers.noctalia = {
     wlib,
     config,
@@ -22,13 +17,6 @@
 
     config = {
       outOfStoreConfig = "/home/araucaria/.config/noctalia";
-
-      preInstalledPlugins = {
-        keybind-cheatsheet = {
-          enabled = true;
-          src = "${inputs.noctalia-plugins.outPath}/keybind-cheatsheet";
-        };
-      };
 
       #settings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings
       colors = with config.theme.palette; {
