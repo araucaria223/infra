@@ -23,6 +23,11 @@
       };
     };
 
+    security.pam.services = {
+      greetd.enableGnomeKeyring = true;
+      login.enableGnomeKeyring = true;
+    };
+
     programs.niri = {
       enable = true;
       package = self'.packages.desktop;
