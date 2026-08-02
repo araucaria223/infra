@@ -27,8 +27,6 @@
           efi.canTouchEfiVariables = true;
         };
 
-	system.etc.overlay.enable = true;
-
         boot.kernelPackages = pkgs.linuxPackages_latest;
         services.fwupd = {
           enable = true;
