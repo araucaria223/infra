@@ -14,6 +14,7 @@
           directory = "/etc/mullvad-vpn";
           mode = "0700";
         }
+	"/var/cache/mullvad-vpn"
       ];
       users.araucaria.directories = [
         ".config/Mullvad VPN"
