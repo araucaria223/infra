@@ -13,7 +13,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    hjem.url = "github:feel-co/hjem";
     import-tree.url = "github:vic/import-tree";
     nix-auto-follow = {
       url = "github:fzakaria/nix-auto-follow";

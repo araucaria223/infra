@@ -11,7 +11,6 @@
       self.diskoConfigurations.lookfar
 
       self.modules.nixos.araucaria
-      self.modules.nixos.hjem
       self.modules.nixos.preservation
       self.modules.nixos.environment
       self.modules.nixos.unfree

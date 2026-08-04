@@ -18,12 +18,6 @@
         };
       };
 
-      hjem.users.araucaria = {
-        enable = true;
-        user = "araucaria";
-        directory = "/home/araucaria";
-      };
-
       preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name} = {
         commonMountOptions = ["x-gvfs-hide"];
         directories = [
