@@ -1,26 +1,28 @@
 {
   self,
+  inputs,
   moduleWithSystem,
   lib,
   ...
 }: {
   flake.modules.generic.library.library.allowedUnfreePackages = ["stremio-linux-shell"];
+
+  flake-file.inputs.noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+
   flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {
     config,
     pkgs,
     ...
   }: {
     imports = [
+      inputs.noctalia-greeter.nixosModules.default
       self.modules.nixos.wireless
       self.modules.nixos.bluetooth
     ];
 
-    services.greetd = {
+    programs.noctalia-greeter = {
       enable = true;
-      settings.default_session = {
-        command = lib.getExe' self'.packages.desktop "niri-session";
-        user = config.users.users.araucaria.name;
-      };
+      settings.idle.timeout = 300;
     };
 
     security.pam.services = {
