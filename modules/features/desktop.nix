@@ -2,7 +2,6 @@
   self,
   inputs,
   moduleWithSystem,
-  lib,
   ...
 }: {
   flake.modules.generic.library.library.allowedUnfreePackages = ["stremio-linux-shell"];
@@ -62,10 +61,20 @@
         }
       ];
 
-      users.${config.users.users.araucaria.name}.directories = [
-        ".stremio-server"
-        ".local/share/stremio"
-      ];
+      users.${config.users.users.araucaria.name} = {
+        directories = [
+          ".stremio-server"
+          ".local/share/stremio"
+
+          ".local/state/noctalia/notification_history_assets"
+        ];
+
+        files = [
+          ".local/state/noctalia/notification_history.json"
+          ".local/state/noctalia/usage_counts.json"
+          ".local/state/noctalia/recently_used.json"
+        ];
+      };
     };
 
     environment.sessionVariables = {
