@@ -52,6 +52,14 @@
         '';
       };
 
+      customPalettes = lib.mkOption {
+        type = lib.types.attrsOf (wlib.types.structuredValueWith {
+          typeName = "JSON";
+          nullable = false;
+        });
+        default = {};
+      };
+
       configDirname = lib.mkOption {
         type = lib.types.str;
         default = "noctalia";
@@ -96,15 +104,26 @@
 
     config.passthru.generatedConfig = "${config.wrapper.${config.configDrvOutput}}/${config.binName}-config/${config.configDirname}";
 
-    config.constructFiles = {
-      settings = lib.mkIf (config.settings != {}) {
-        key = "noctaliaConfigToml";
-        relPath = lib.mkOverride 0 "${config.binName}-config/${config.configDirname}/config.toml";
-        output = lib.mkOverride 0 config.configDrvOutput;
-        content = builtins.toJSON config.settings;
-        builder = ''${pkgs.remarshal}/bin/json2toml "$1" "$2"'';
-      };
-    };
+    config.constructFiles =
+      {
+        settings = lib.mkIf (config.settings != {}) {
+          key = "noctaliaConfigToml";
+          relPath = lib.mkOverride 0 "${config.binName}-config/${config.configDirname}/config.toml";
+          output = lib.mkOverride 0 config.configDrvOutput;
+          content = builtins.toJSON config.settings;
+          builder = ''${pkgs.remarshal}/bin/json2toml "$1" "$2"'';
+        };
+      }
+      // (lib.mapAttrs' (
+          name: value:
+            lib.nameValuePair "palette_${name}" {
+              key = "noctaliaPalette_${name}";
+              relPath = lib.mkOverride 0 "${config.binName}-config/${config.configDirname}/palettes/${name}.json";
+              output = lib.mkOverride 0 config.configDrvOutput;
+              content = builtins.toJSON value;
+            }
+        )
+        config.customPalettes);
 
     config.buildCommand.validateNoctaliaConfig = lib.mkIf config.validateConfig ''
       ${config.wrapperPaths.placeholder} config validate ${config.configPlaceholder}/${config.configDirname}
