@@ -1,13 +1,6 @@
-{
-  self,
-  moduleWithSystem,
-  ...
-}: {
-  flake-file.inputs.noctalia.url = "github:noctalia-dev/noctalia/cachix";
-
-  flake.wrappers.noctalia-v5 = moduleWithSystem ({inputs', ...}: {...}: {
+{self, ...}: {
+  flake.wrappers.noctalia-v5 = {...}: {
     imports = [self.wrapperModules.noctalia-wrapper];
-    package = inputs'.noctalia.packages.default;
 
     settings =
       fromTOML (builtins.readFile ./config.toml)
@@ -37,36 +30,9 @@
           mOnSurfaceVariant = base04;
           mOutline = base03;
           mShadow = base00;
-          terminal = {
-            background = base00;
-            foreground = base07;
-            cursor = base05;
-            cursorText = base00;
-            selectionBg = base02;
-            selectionFg = base05;
-            normal = {
-              black = base00;
-              red = base08;
-              green = base0B;
-              yellow = base0A;
-              blue = base0D;
-              magenta = base0E;
-              cyan = base0C;
-              white = base0F;
-            };
-            bright = {
-              black = base00;
-              red = base08;
-              green = base0B;
-              yellow = base0A;
-              blue = base0D;
-              magenta = base0E;
-              cyan = base0C;
-              white = base0F;
-            };
-          };
+          terminal = {};
         };
       };
     };
-  });
+  };
 }
