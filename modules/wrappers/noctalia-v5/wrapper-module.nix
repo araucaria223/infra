@@ -1,9 +1,5 @@
-{
-  moduleWithSystem,
-  lib,
-  ...
-}: {
-  flake.wrappers.noctalia-wrapper = moduleWithSystem ({inputs', ...}: {
+{lib, ...}: {
+  flake.wrappers.noctalia-wrapper = {
     config,
     wlib,
     pkgs,
@@ -56,27 +52,6 @@
         '';
       };
 
-      extraConfigFiles = lib.mkOption {
-        type = lib.types.attrsOf (wlib.types.structuredValueWith {
-          typeName = "TOML";
-          nullable = false;
-        });
-        default = {};
-        example = lib.literalExpression ''
-          {
-            # written to noctalia/bars/top.toml - pull in with [include] from settings
-            "bars/top" = { bar.top.thickness = 40; };
-          }
-        '';
-        description = ''
-          Additional `*.toml` files to place inside the generated `noctalia/`
-          directory, keyed by their path relative to it (without the `.toml`
-          extension; may include subdirectories, e.g. for use with `[include]` in
-          `settings`). Each value is a Nix attribute set, a raw TOML string, or a
-          path.
-        '';
-      };
-
       configDirname = lib.mkOption {
         type = lib.types.str;
         default = "noctalia";
@@ -114,49 +89,25 @@
       };
     };
 
-    config.package = lib.mkDefault inputs'.noctalia.packages.default;
     config.binName = lib.mkDefault "noctalia";
+    config.package = lib.mkDefault pkgs.noctalia;
 
-    config.env.NOCTALIA_CONFIG_HOME = lib.mkIf (config.settings != {} || config.extraConfigFiles != {}) "${config.configPlaceholder}/";
+    config.env.NOCTALIA_CONFIG_HOME = lib.mkIf (config.settings != {}) "${config.configPlaceholder}/";
 
     config.passthru.generatedConfig = "${config.wrapper.${config.configDrvOutput}}/${config.binName}-config/${config.configDirname}";
 
-    config.constructFiles =
-      (lib.optionalAttrs (config.settings != {}) {
-        settings = {
-          key = "noctaliaConfigToml";
-          relPath = lib.mkOverride 0 "${config.binName}-config/${config.configDirname}/config.toml";
-          output = lib.mkOverride 0 config.configDrvOutput;
-          content = builtins.toJSON config.settings;
-          builder = ''${pkgs.remarshal}/bin/json2toml "$1" "$2"'';
-        };
-      })
-      // (lib.mapAttrs' (
-          name: value:
-            lib.nameValuePair "extra_${builtins.replaceStrings ["/"] ["_"] name}" {
-              key = "noctaliaExtra_${builtins.replaceStrings ["/" "-"] ["_" "_"] name}";
-              relPath = lib.mkOverride 0 "${config.binName}-config/${config.configDirname}/${name}.toml";
-              output = lib.mkOverride 0 config.configDrvOutput;
-              content = builtins.toJSON value;
-              builder = ''${pkgs.remarshal}/bin/json2toml "$1" "$2"'';
-            }
-        )
-        config.extraConfigFiles);
+    config.constructFiles = {
+      settings = lib.mkIf (config.settings != {}) {
+        key = "noctaliaConfigToml";
+        relPath = lib.mkOverride 0 "${config.binName}-config/${config.configDirname}/config.toml";
+        output = lib.mkOverride 0 config.configDrvOutput;
+        content = builtins.toJSON config.settings;
+        builder = ''${pkgs.remarshal}/bin/json2toml "$1" "$2"'';
+      };
+    };
 
-    config.buildCommand.validateNoctaliaConfig = lib.mkIf config.validateConfig (
-      let
-        generatedFiles =
-          (lib.optional (config.settings != {}) config.constructFiles.settings.path)
-          ++ (lib.mapAttrsToList (
-              name: _:
-                config.constructFiles."extra_${builtins.replaceStrings ["/"] ["_"] name}".path
-            )
-            config.extraConfigFiles);
-      in
-        lib.concatMapStringsSep "\n" (f: ''
-          ${lib.getExe config.package} config validate ${lib.escapeShellArg f}
-        '')
-        generatedFiles
-    );
-  });
+    config.buildCommand.validateNoctaliaConfig = lib.mkIf config.validateConfig ''
+      ${config.wrapperPaths.placeholder} config validate ${config.configPlaceholder}/${config.configDirname}
+    '';
+  };
 }
