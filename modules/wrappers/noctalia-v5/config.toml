@@ -173,6 +173,7 @@ position_vertical = "center_right"
 launch_apps_as_systemd_services = true
 niri_overview_type_to_launch_enabled = true
 polkit_agent = true
+setup_wizard_enabled = false
 
     [shell.launcher]
     compact = true
