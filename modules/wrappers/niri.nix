@@ -77,6 +77,8 @@
       };
 
       window-rules = [
+        {geometry-corner-radius = 10;}
+        {clip-to-geometry = true;}
         {
           matches = [
             {app-id = "dev.noctalia.Noctalia";}
