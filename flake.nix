@@ -25,6 +25,10 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+    noctalia-plugins = {
+      url = "github:noctalia-dev/official-plugins";
+      flake = false;
+    };
     preservation.url = "github:nix-community/preservation";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
