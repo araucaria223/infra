@@ -15,16 +15,12 @@
       self.modules.nixos.environment
       self.modules.nixos.unfree
       self.modules.nixos.desktop
+      self.modules.nixos.limine
 
       ({pkgs, ...}: {
         networking.hostName = "lookfar";
         time.timeZone = "Europe/London";
         i18n.defaultLocale = "en_GB.UTF-8";
-
-        boot.loader = {
-          systemd-boot.enable = true;
-          efi.canTouchEfiVariables = true;
-        };
 
         boot.kernelPackages = pkgs.linuxPackages_latest;
         services.fwupd = {
