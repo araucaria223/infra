@@ -1,8 +1,14 @@
 {
   self,
   lib,
+  inputs,
   ...
 }: {
+  flake-file.inputs.noctalia-plugins = {
+    url = "github:noctalia-dev/official-plugins";
+    flake = false;
+  };
+
   flake.wrappers.noctalia-v5 = {
     pkgs,
     config,
@@ -21,6 +27,20 @@
         theme = {
           source = "custom";
           custom_palette = config.theme.name;
+        };
+
+        plugins = {
+          auto_update = false;
+          enabled = ["noctalia/wallhaven"];
+
+          source = [
+            {
+              name = "official";
+              kind = "path";
+              location = inputs.noctalia-plugins;
+              enabled = true;
+            }
+          ];
         };
 
         backdrop = {
@@ -220,10 +240,10 @@
               "control-center"
               "notifications"
               "group:networking"
-              "tray"
+              "media"
             ];
             center = ["workspaces"];
-            end = ["media" "group:system-info" "clock"];
+            end = ["tray" "group:system-info" "clock"];
           };
         };
 
