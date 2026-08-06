@@ -77,7 +77,7 @@
       };
 
       window-rules = [
-        {geometry-corner-radius = 10;}
+        {geometry-corner-radius = 5;}
         {clip-to-geometry = true;}
         {
           matches = [
