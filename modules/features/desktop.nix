@@ -6,7 +6,10 @@
 }: {
   flake.modules.generic.library.library.allowedUnfreePackages = ["stremio-linux-shell"];
 
-  flake-file.inputs.noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+  flake-file.inputs.noctalia-greeter = {
+    url = "github:noctalia-dev/noctalia-greeter";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {
     config,
