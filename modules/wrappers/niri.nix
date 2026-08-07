@@ -162,6 +162,11 @@
                   desc = "Wifi";
                   cmd = "${noctalia} msg panel-toggle control-center network";
                 }
+		{
+		  key = "W";
+		  desc = "Wallhaven";
+		  cmd = "${noctalia} msg panel-toggle noctalia/wallhaven:browser";
+		}
                 {
                   key = "f";
                   desc = "Firefox";

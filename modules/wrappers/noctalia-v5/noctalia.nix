@@ -43,6 +43,15 @@
           ];
         };
 
+	wallpaper = {
+	  fill_color = config.theme.palette.base00;
+	  automation = {
+	    enabled = true;
+	    interval_seconds = 1800;
+	    order = "random";
+	  };
+	};
+
         backdrop = {
           enabled = true;
           blur_intensity = 0.5;
