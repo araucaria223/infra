@@ -21,7 +21,7 @@
     environment.systemPackages = [pkgs.sbctl];
   };
 
-  flake.modules.nixos.preservation = {...}: {
+  flake.modules.nixos.preservation = {
     preservation.preserveAt."/persistent".directories = [
       "/var/lib/sbctl"
     ];

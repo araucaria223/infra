@@ -1,4 +1,4 @@
-{...}: {
+{
   flake.modules.nixos.nixbuild = {
     programs.ssh.extraConfig = ''
       Host eu.nixbuild.net

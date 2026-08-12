@@ -8,7 +8,7 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  flake.modules.nixos.environment = {...}: {
+  flake.modules.nixos.environment = {
     imports = [
       self.modules.nixos.ssh
       inputs.nix-index-database.nixosModules.nix-index

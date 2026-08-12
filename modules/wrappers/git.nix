@@ -1,4 +1,4 @@
-{...}: {
+{
   flake.wrappers.git = {wlib, ...}: {
     imports = [wlib.wrapperModules.git];
 
