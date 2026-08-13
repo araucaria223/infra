@@ -17,6 +17,7 @@
       self.modules.nixos.desktop
       self.modules.nixos.limine
       self.modules.nixos.plymouth
+      self.modules.nixos.steam
 
       ({pkgs, ...}: {
         networking.hostName = "lookfar";
