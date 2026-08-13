@@ -16,6 +16,7 @@
       self.modules.nixos.unfree
       self.modules.nixos.desktop
       self.modules.nixos.limine
+      self.modules.nixos.plymouth
 
       ({pkgs, ...}: {
         networking.hostName = "lookfar";
