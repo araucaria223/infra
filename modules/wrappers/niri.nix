@@ -44,7 +44,7 @@
 
       cursor = {
         xcursor-theme = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-dark";
-	xcursor-size = 20;
+        xcursor-size = 20;
       };
 
       input = {
@@ -167,11 +167,11 @@
                   desc = "Wifi";
                   cmd = "${noctalia} msg panel-toggle control-center network";
                 }
-		{
-		  key = "W";
-		  desc = "Wallhaven";
-		  cmd = "${noctalia} msg panel-toggle noctalia/wallhaven:browser";
-		}
+                {
+                  key = "W";
+                  desc = "Wallhaven";
+                  cmd = "${noctalia} msg panel-toggle noctalia/wallhaven:browser";
+                }
                 {
                   key = "f";
                   desc = "Firefox";

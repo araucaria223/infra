@@ -1,5 +1,9 @@
-{self, ...}: {
-  flake.wrappers.emacs = {pkgs, wlib, ...}: {
+{
+  flake.wrappers.emacs = {
+    pkgs,
+    wlib,
+    ...
+  }: {
     imports = [wlib.wrapperModules.emacs];
 
     package = pkgs.emacs-pgtk;

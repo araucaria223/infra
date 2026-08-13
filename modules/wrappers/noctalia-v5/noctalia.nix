@@ -43,14 +43,14 @@
           ];
         };
 
-	wallpaper = {
-	  fill_color = config.theme.palette.base00;
-	  automation = {
-	    enabled = true;
-	    interval_seconds = 1800;
-	    order = "random";
-	  };
-	};
+        wallpaper = {
+          fill_color = config.theme.palette.base00;
+          automation = {
+            enabled = true;
+            interval_seconds = 1800;
+            order = "random";
+          };
+        };
 
         backdrop = {
           enabled = true;
