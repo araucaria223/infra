@@ -24,6 +24,7 @@
 
     programs.noctalia-greeter = {
       enable = true;
+      package = pkgs.noctalia-greeter;
       settings.idle.timeout = 300;
     };
 
