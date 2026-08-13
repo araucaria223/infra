@@ -86,6 +86,11 @@
       XDG_STATE_HOME = "$HOME/.local/state";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_CACHE_HOME = "$HOME/.cache";
+
+      XDG_DATA_DIRS = [ "${pkgs.phinger-cursors}/share" ];
+      XCURSOR_THEME = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-dark";
+      XCURSOR_SIZE = "20";
+      XCURSOR_PATH = ["${pkgs.phinger-cursors}/share/icons"];
     };
   });
 }

@@ -42,6 +42,11 @@
         honor-xdg-activation-with-invalid-serial = _: {};
       };
 
+      cursor = {
+        xcursor-theme = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-dark";
+	xcursor-size = 20;
+      };
+
       input = {
         keyboard.xkb.layout = "us";
 
