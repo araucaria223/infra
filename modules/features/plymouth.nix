@@ -13,5 +13,10 @@
 
       loader.timeout = 0;
     };
+
+    systemd.services = {
+      systemd-udev-settle.enable = false;
+      NetworkManager-wait-online.enable = false;
+    };
   };
 }
