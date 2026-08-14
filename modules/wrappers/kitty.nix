@@ -4,6 +4,7 @@
   ...
 }: {
   flake.wrappers.kitty = {
+    pkgs,
     wlib,
     config,
     ...
@@ -22,6 +23,12 @@
 
     config = with config.theme; {
       addFlag = lib.mkAfter (lib.optionals (config.shell != "") [config.shell]);
+      env."FONTCONFIG_FILE" = let
+      	customFontconfig = pkgs.makeFontsConf {
+	  fontDirectories = [ "${pkgs.nerd-fonts.jetbrains-mono}" ];
+	};
+        in "${customFontconfig}";
+
       settings = {
         scrollback_lines = 10000;
         enable_audio_bell = false;
@@ -29,6 +36,8 @@
 
         window_padding_width = 10;
         confirm_os_window_close = 0;
+
+	font_family = "JetBrainsMono Nerd Font";
 
         background = palette.base00;
         foreground = palette.base07;
