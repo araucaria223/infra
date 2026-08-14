@@ -4,6 +4,13 @@
     "steam-unwrapped"
   ];
 
+  flake.modules.nixos.preservation = {config, ...}: {
+    preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name}.directories = [
+      ".steam"
+      ".local/share/Steam"
+    ];
+  };
+
   flake.modules.nixos.steam = {
     pkgs,
     config,
@@ -25,18 +32,15 @@
           enable = true;
           gamescopeSession.enable = true;
         };
-
-        noctalia-greeter.enable = lib.mkForce false;
-        niri.enable = lib.mkForce false;
       };
 
-      services.greetd = {
-        enable = true;
-        settings.default_session = {
-          command = "${lib.getExe pkgs.gamescope} -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamdeck -steamos3 > /dev/null 2>&1";
-          user = config.users.users.araucaria.name;
+        services.greetd = {
+          enable = true;
+          settings.default_session = {
+            command = "${lib.getExe pkgs.gamescope} -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamdeck -steamos3 > /dev/null 2>&1";
+            user = config.users.users.araucaria.name;
+          };
         };
-      };
     };
   };
 }
