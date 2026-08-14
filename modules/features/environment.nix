@@ -13,6 +13,7 @@
       self.modules.nixos.ssh
       inputs.nix-index-database.nixosModules.nix-index
       self.modules.nixos.nixbuild
+      self.modules.nixos.determinate
     ];
 
     programs.nix-index-database.comma.enable = true;
