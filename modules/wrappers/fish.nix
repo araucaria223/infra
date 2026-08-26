@@ -41,6 +41,7 @@
         expansion = ". -name '*.%'";
         command = "find";
         cursor = true;
+	position = "anywhere";
       };
 
       lsa = "ls -la";
