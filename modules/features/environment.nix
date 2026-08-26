@@ -1,6 +1,7 @@
 {
   self,
   inputs,
+  lib,
   ...
 }: {
   flake-file.inputs.nix-index-database = {
@@ -18,10 +19,20 @@
 
     programs.nix-index-database.comma.enable = true;
 
-    nix.settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    nix = let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in {
+      channel.enable = false;
+      registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+      settings = {
+        flake-registry = "";
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
+    };
 
     programs.direnv = {
       enable = true;
