@@ -8,13 +8,14 @@
 
     package = pkgs.emacs-pgtk;
 
-    emacsPackages = epkgs: with epkgs.melpaPackages; [
-      evil
-      doom-themes
-      which-key
-      vterm
-      nix-mode
-    ];
+    emacsPackages = epkgs:
+      with epkgs.melpaPackages; [
+        evil
+        doom-themes
+        which-key
+        vterm
+        nix-mode
+      ];
     userDirectory = "~/.config/emacs";
 
     configFile = ''

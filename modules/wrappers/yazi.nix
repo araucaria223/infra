@@ -1,5 +1,9 @@
 {
-  flake.wrappers.yazi = {wlib, pkgs, ...}: {
+  flake.wrappers.yazi = {
+    wlib,
+    pkgs,
+    ...
+  }: {
     imports = [wlib.wrapperModules.yazi];
 
     plugins = with pkgs.yaziPlugins; {
