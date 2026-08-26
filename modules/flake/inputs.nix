@@ -4,7 +4,7 @@
   ];
 
   flake-file.inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
     flake-file.url = "github:vic/flake-file";
     disko = {
       url = "github:nix-community/disko";

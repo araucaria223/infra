@@ -24,7 +24,7 @@
       url = "github:nixos/nixos-hardware";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
