@@ -186,6 +186,24 @@
         "type": "github"
       }
     },
+    "niri-animations": {
+      "flake": false,
+      "locked": {
+        "dir": "animations",
+        "lastModified": 1775538886,
+        "narHash": "sha256-DgoudR6etn+t5eYplPcOISPuWMRAulW6ZOCTsyFHi2w=",
+        "owner": "jgarza9788",
+        "repo": "niri-animation-collection",
+        "rev": "aa26f4e157b818630cb281f6e1968b641c079d69",
+        "type": "github"
+      },
+      "original": {
+        "dir": "animations",
+        "owner": "jgarza9788",
+        "repo": "niri-animation-collection",
+        "type": "github"
+      }
+    },
     "nix": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -380,6 +398,7 @@
         "flake-file": "flake-file",
         "flake-parts": "flake-parts_2",
         "import-tree": "import-tree",
+        "niri-animations": "niri-animations",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",

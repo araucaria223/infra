@@ -16,6 +16,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
+    niri-animations = {
+      url = "github:jgarza9788/niri-animation-collection?dir=animations";
+      flake = false;
+    };
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

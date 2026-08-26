@@ -1,9 +1,15 @@
 {
+  inputs,
   lib,
   self,
   moduleWithSystem,
   ...
 }: {
+  flake-file.inputs.niri-animations = {
+    url = "github:jgarza9788/niri-animation-collection?dir=animations";
+    flake = false;
+  };
+
   flake.wrappers.niri = moduleWithSystem (perSystem @ {
     self',
     config,
@@ -27,6 +33,10 @@
       };
     };
 
+    config.extraSettings = [
+      { animations.slowdown = 0.5; }
+    ];
+
     config.settings = let
       noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
       ipc = args: [noctalia "msg"] ++ args;
@@ -34,6 +44,8 @@
       #polkit-auth = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
     in {
       xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+
+      include = "${inputs.niri-animations}/pixelate.kdl";
 
       spawn-at-startup = [noctalia mullvad];
 
