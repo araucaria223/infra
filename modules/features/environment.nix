@@ -9,7 +9,7 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  flake.modules.nixos.environment = {
+  flake.modules.nixos.environment = {pkgs, ...}: {
     imports = [
       self.modules.nixos.ssh
       inputs.nix-index-database.nixosModules.nix-index
@@ -33,10 +33,9 @@
       };
     };
 
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+    environment.systemPackages = [
+      pkgs.devenv
+    ];
 
     programs.nix-ld = {
       enable = true;
