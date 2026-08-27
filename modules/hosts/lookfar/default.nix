@@ -14,6 +14,7 @@
       self.modules.nixos.preservation
       self.modules.nixos.environment
       self.modules.nixos.unfree
+      self.modules.nixos.zram
       self.modules.nixos.desktop
       self.modules.nixos.limine
       self.modules.nixos.plymouth
