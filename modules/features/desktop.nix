@@ -40,6 +40,7 @@
 
     environment.systemPackages = [
       self'.packages.kitty
+      pkgs.vscodium
     ];
 
     programs.firefox = {
