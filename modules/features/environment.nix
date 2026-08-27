@@ -13,7 +13,6 @@
     imports = [
       self.modules.nixos.ssh
       inputs.nix-index-database.nixosModules.nix-index
-      self.modules.nixos.nixbuild
       self.modules.nixos.determinate
     ];
 
