@@ -34,7 +34,7 @@
     };
 
     config.extraSettings = [
-      { animations.slowdown = 0.5; }
+      {animations.slowdown = 0.5;}
     ];
 
     config.settings = let

@@ -45,7 +45,7 @@
         content = {
           type = "swap";
           resumeDevice = true;
-	  priority = 1;
+          priority = 1;
         };
       };
 

@@ -67,16 +67,16 @@
 
         dock = {
           enabled = false;
-        #  active_scale = 0.9;
-        #  icon_size = 35;
-        #  launcher_position = "start";
-        #  main_axis_padding = 10;
-        #  pinned = ["Firefox" "kitty" "stremio" "KeePassXC"];
-        #  radius = 10;
-        #  reserve_space = false;
-        #  show_dots = true;
-        #  show_instance_count = false;
-        #  smart_auto_hide = true;
+          #  active_scale = 0.9;
+          #  icon_size = 35;
+          #  launcher_position = "start";
+          #  main_axis_padding = 10;
+          #  pinned = ["Firefox" "kitty" "stremio" "KeePassXC"];
+          #  radius = 10;
+          #  reserve_space = false;
+          #  show_dots = true;
+          #  show_instance_count = false;
+          #  smart_auto_hide = true;
         };
 
         idle = {
