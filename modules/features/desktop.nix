@@ -42,7 +42,10 @@
       self'.packages.kitty
     ];
 
-    programs.firefox.enable = true;
+    programs.firefox = {
+      enable = true;
+      package = self'.packages.firefox;
+    };
 
     services = {
       upower.enable = true;
