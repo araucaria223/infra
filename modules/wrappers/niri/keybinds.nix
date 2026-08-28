@@ -1,18 +1,16 @@
-{self, lib, moduleWithSystem, ...}: {
+{
+  lib,
+  moduleWithSystem,
+  ...
+}: {
   flake.wrappers.niri = moduleWithSystem (perSystem @ {
     self',
     config,
     ...
-  }: {
-    wlib,
-    pkgs,
-    config,
-    ...
-  }: {
+  }: {config, ...}: {
     settings.binds = let
       noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
       ipc = args: [noctalia "msg"] ++ args;
-      mullvad = lib.getExe pkgs.mullvad-vpn;
       terminal = lib.getExe perSystem.self'.packages.terminal;
 
       bind = title: content: _: {
@@ -46,179 +44,180 @@
         (lib.mapAttrs' (_n: v: lib.nameValuePair "${action}-${obj}-${direction}" v) {
           _ = _: {};
         });
-    in {
-      "Mod+Space" = norepeat "Launcher" {
-        spawn = ipc ["panel-toggle" "launcher"];
-      };
-
-      "Mod+Return" = norepeat "Terminal" {
-        spawn = [terminal];
-      };
-
-      "Mod+D" = norepeat "Launch chords" {
-        spawn-sh = perSystem.config.library.mkWhichKeyExe {
-          inherit (config) theme;
-
-          menu = [
-            {
-              key = "b";
-              desc = "Bluetooth";
-              cmd = "${noctalia} msg panel-toggle control-center bluetooth";
-            }
-
-            {
-              key = "w";
-              desc = "Wifi";
-              cmd = "${noctalia} msg panel-toggle control-center network";
-            }
-
-            {
-              key = "W";
-              desc = "Wallhaven";
-              cmd = "${noctalia} msg panel-toggle noctalia/wallhaven:browser";
-            }
-
-            {
-              key = "f";
-              desc = "Firefox";
-              cmd = lib.getExe perSystem.self'.packages.firefox;
-            }
-          ];
+    in
+      {
+        "Mod+Space" = norepeat "Launcher" {
+          spawn = ipc ["panel-toggle" "launcher"];
         };
-      };
 
-      "Mod+Shift+L" = norepeat "Lock screen" {
-        spawn = ipc ["session" "lock"];
-      };
+        "Mod+Return" = norepeat "Terminal" {
+          spawn = [terminal];
+        };
 
-      "Mod+Shift+P" = norepeat "Power menu" {
-        spawn = ipc ["panel-toggle" "session"];
-      };
+        "Mod+D" = norepeat "Launch chords" {
+          spawn-sh = perSystem.config.library.mkWhichKeyExe {
+            inherit (config) theme;
 
-          "XF86AudioRaiseVolume" = locked "Raise volume" {
-            spawn = ipc ["volume-up"];
+            menu = [
+              {
+                key = "b";
+                desc = "Bluetooth";
+                cmd = "${noctalia} msg panel-toggle control-center bluetooth";
+              }
+
+              {
+                key = "w";
+                desc = "Wifi";
+                cmd = "${noctalia} msg panel-toggle control-center network";
+              }
+
+              {
+                key = "W";
+                desc = "Wallhaven";
+                cmd = "${noctalia} msg panel-toggle noctalia/wallhaven:browser";
+              }
+
+              {
+                key = "f";
+                desc = "Firefox";
+                cmd = lib.getExe perSystem.self'.packages.firefox;
+              }
+            ];
+          };
+        };
+
+        "Mod+Shift+L" = norepeat "Lock screen" {
+          spawn = ipc ["session" "lock"];
+        };
+
+        "Mod+Shift+P" = norepeat "Power menu" {
+          spawn = ipc ["panel-toggle" "session"];
+        };
+
+        "XF86AudioRaiseVolume" = locked "Raise volume" {
+          spawn = ipc ["volume-up"];
+        };
+
+        "XF86AudioLowerVolume" = locked "Lower volume" {
+          spawn = ipc ["volume-down"];
+        };
+
+        "XF86AudioMute" = locked "Mute playback" {
+          spawn = ipc ["volume-mute"];
+        };
+
+        "XF86MonBrightnessUp" = locked "Increase brightness" {
+          spawn = ipc ["brightness-up"];
+        };
+
+        "XF86MonBrightnessDown" = locked "Decrease brightness" {
+          spawn = ipc ["brightness-down"];
+        };
+
+        "Mod+Q" = norepeat "Close window" {
+          close-window = _: {};
+        };
+        "Mod+F" = norepeat "Fullscreen window" {
+          fullscreen-window = _: {};
+        };
+        "Mod+Shift+F" = norepeat "Windowed fullscreen" {
+          toggle-windowed-fullscreen = _: {};
+        };
+        "Mod+M" = norepeat "Maximise column" {
+          maximize-column = _: {};
+        };
+
+        "Mod+Equal" = bind "Increase column width" {
+          set-column-width = "+10%";
+        };
+
+        "Mod+Minus" = bind "Decrease column width" {
+          set-column-width = "-10%";
+        };
+
+        "Mod+Shift+Equal" = bind "Increase window height" {
+          set-window-height = "+10%";
+        };
+
+        "Mod+Shift+Minus" = bind "Decrease window height" {
+          set-window-height = "-10%";
+        };
+
+        "Mod+Left" = window "focus" "left";
+        "Mod+Down" = window "focus" "down";
+        "Mod+Up" = window "focus" "up";
+        "Mod+Right" = window "focus" "right";
+
+        "Mod+H" = window "focus" "left";
+        "Mod+J" = window "focus" "down";
+        "Mod+K" = window "focus" "up";
+        "Mod+L" = window "focus" "right";
+
+        "Mod+Ctrl+Left" = window "move" "left";
+        "Mod+Ctrl+Down" = window "move" "down";
+        "Mod+Ctrl+Up" = window "move" "up";
+        "Mod+Ctrl+Right" = window "move" "right";
+
+        "Mod+Ctrl+H" = window "move" "left";
+        "Mod+Ctrl+J" = window "move" "down";
+        "Mod+Ctrl+K" = window "move" "up";
+        "Mod+Ctrl+L" = window "move" "right";
+
+        "Mod+Home" = window "focus" "first";
+        "Mod+End" = window "focus" "last";
+        "Mod+Ctrl+Home" = window "move" "to-first";
+        "Mod+Ctrl+End" = window "move" "to-last";
+
+        "Mod+G" = window "focus" "first";
+        "Mod+SemiColon" = window "focus" "last";
+        "Mod+Ctrl+G" = window "move" "to-first";
+        "Mod+Ctrl+SemiColon" = window "move" "to-last";
+
+        "Mod+WheelScrollRight" = window "focus" "right";
+        "Mod+WheelScrollLeft" = window "focus" "left";
+        "Mod+Ctrl+WheelScrollRight" = window "move" "right";
+        "Mod+Ctrl+WheelScrollLeft" = window "move" "left";
+
+        "Mod+Escape" = _: {
+          props = {
+            hotkey-overlay-title = "Escape keybind inhibitor";
+            allow-inhibiting = false;
           };
 
-          "XF86AudioLowerVolume" = locked "Lower volume" {
-            spawn = ipc ["volume-down"];
-          };
+          content.toggle-keyboard-shortcuts-inhibit = _: {};
+        };
 
-          "XF86AudioMute" = locked "Mute playback" {
-            spawn = ipc ["volume-mute"];
-          };
-
-          "XF86MonBrightnessUp" = locked "Increase brightness" {
-            spawn = ipc ["brightness-up"];
-          };
-
-          "XF86MonBrightnessDown" = locked "Decrease brightness" {
-            spawn = ipc ["brightness-down"];
-          };
-
-          "Mod+Q" = norepeat "Close window" {
-            close-window = _: {};
-          };
-          "Mod+F" = norepeat "Fullscreen window" {
-            fullscreen-window = _: {};
-          };
-          "Mod+Shift+F" = norepeat "Windowed fullscreen" {
-            toggle-windowed-fullscreen = _: {};
-          };
-          "Mod+M" = norepeat "Maximise column" {
-            maximize-column = _: {};
-          };
-
-          "Mod+Equal" = bind "Increase column width" {
-            set-column-width = "+10%";
-          };
-
-          "Mod+Minus" = bind "Decrease column width" {
-            set-column-width = "-10%";
-          };
-
-          "Mod+Shift+Equal" = bind "Increase window height" {
-            set-window-height = "+10%";
-          };
-
-          "Mod+Shift+Minus" = bind "Decrease window height" {
-            set-window-height = "-10%";
-          };
-
-          "Mod+Left" = window "focus" "left";
-          "Mod+Down" = window "focus" "down";
-          "Mod+Up" = window "focus" "up";
-          "Mod+Right" = window "focus" "right";
-
-          "Mod+H" = window "focus" "left";
-          "Mod+J" = window "focus" "down";
-          "Mod+K" = window "focus" "up";
-          "Mod+L" = window "focus" "right";
-
-          "Mod+Ctrl+Left" = window "move" "left";
-          "Mod+Ctrl+Down" = window "move" "down";
-          "Mod+Ctrl+Up" = window "move" "up";
-          "Mod+Ctrl+Right" = window "move" "right";
-
-          "Mod+Ctrl+H" = window "move" "left";
-          "Mod+Ctrl+J" = window "move" "down";
-          "Mod+Ctrl+K" = window "move" "up";
-          "Mod+Ctrl+L" = window "move" "right";
-
-          "Mod+Home" = window "focus" "first";
-          "Mod+End" = window "focus" "last";
-          "Mod+Ctrl+Home" = window "move" "to-first";
-          "Mod+Ctrl+End" = window "move" "to-last";
-
-          "Mod+G" = window "focus" "first";
-          "Mod+SemiColon" = window "focus" "last";
-          "Mod+Ctrl+G" = window "move" "to-first";
-          "Mod+Ctrl+SemiColon" = window "move" "to-last";
-
-          "Mod+WheelScrollRight" = window "focus" "right";
-          "Mod+WheelScrollLeft" = window "focus" "left";
-          "Mod+Ctrl+WheelScrollRight" = window "move" "right";
-          "Mod+Ctrl+WheelScrollLeft" = window "move" "left";
-
-          "Mod+Escape" = _: {
+        "Mod+S" = norepeat "Screenshot (region)" {screenshot = _: {};};
+        "Mod+Shift+S" = norepeat "Screenshot (window)" {
+          screenshot-window = _: {};
+        };
+        "Print" = norepeat "Screenshot (screen)" {screenshot-screen = _: {};};
+      }
+      // builtins.listToAttrs (builtins.concatMap (x: let
+        wksp = toString x;
+      in [
+        {
+          name = "Mod+${wksp}";
+          value = _: {
             props = {
-              hotkey-overlay-title = "Escape keybind inhibitor";
-              allow-inhibiting = false;
+              hotkey-overlay-title = "Focus workspace ${wksp}";
+              repeat = false;
             };
 
-            content.toggle-keyboard-shortcuts-inhibit = _: {};
+            content = {focus-workspace = x;};
           };
-
-          "Mod+S" = norepeat "Screenshot (region)" {screenshot = _: {};};
-          "Mod+Shift+S" = norepeat "Screenshot (window)" {
-            screenshot-window = _: {};
-          };
-          "Print" = norepeat "Screenshot (screen)" {screenshot-screen = _: {};};
         }
-        // builtins.listToAttrs (builtins.concatMap (x: let
-          wksp = toString x;
-        in [
-          {
-            name = "Mod+${wksp}";
-            value = _: {
-              props = {
-                hotkey-overlay-title = "Focus workspace ${wksp}";
-                repeat = false;
-              };
-
-              content = {focus-workspace = x;};
+        {
+          name = "Mod+Shift+${wksp}";
+          value = _: {
+            props = {
+              hotkey-overlay-title = "Move window to workspace ${wksp}";
+              repeat = false;
             };
-          }
-          {
-            name = "Mod+Shift+${wksp}";
-            value = _: {
-              props = {
-                hotkey-overlay-title = "Move window to workspace ${wksp}";
-                repeat = false;
-              };
 
-              content = {move-window-to-workspace = x;};
-            };
-          }
-        ]) (lib.range 1 9));
+            content = {move-window-to-workspace = x;};
+          };
+        }
+      ]) (lib.range 1 9));
   });
 }

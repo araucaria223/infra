@@ -1,7 +1,6 @@
 {
   self,
   lib,
-  inputs,
   ...
 }: {
   flake.wrappers.noctalia-v5 = {
