@@ -35,6 +35,7 @@
 
     environment.systemPackages = [
       pkgs.devenv
+      pkgs.nix-output-monitor
     ];
 
     programs.nix-ld = {

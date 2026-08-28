@@ -55,7 +55,9 @@
 
         ${lib.getExe pkgs.zoxide} init fish | source
 
-        devenv hook fish | source
+        ${lib.getExe pkgs.devenv} hook fish | source
+
+        ${lib.getExe pkgs.nix-your-shell} --nom fish | source
       '';
   });
 }
