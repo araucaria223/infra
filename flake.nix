@@ -37,10 +37,6 @@
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia-plugins = {
-      url = "github:noctalia-dev/official-plugins";
-      flake = false;
-    };
     preservation.url = "github:nix-community/preservation";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";

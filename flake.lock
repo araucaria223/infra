@@ -381,22 +381,6 @@
         "type": "github"
       }
     },
-    "noctalia-plugins": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1787021587,
-        "narHash": "sha256-gb4YgbRAismjl3Cur4ERFDfU2pR33ynRw0/CCAFw+Pw=",
-        "owner": "noctalia-dev",
-        "repo": "official-plugins",
-        "rev": "8cb833c3e2502f57e49d34fa64386b4d66794b77",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "official-plugins",
-        "type": "github"
-      }
-    },
     "preservation": {
       "locked": {
         "lastModified": 1757436102,
@@ -426,7 +410,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "noctalia-greeter": "noctalia-greeter",
-        "noctalia-plugins": "noctalia-plugins",
         "preservation": "preservation",
         "treefmt-nix": "treefmt-nix",
         "wrapper-modules": "wrapper-modules"
