@@ -38,10 +38,19 @@
       package = self'.packages.desktop;
     };
 
+    services.spotifyd = {
+    	enable = true;
+	settings = {
+	  backend = "pipe";
+	  bitrate = 320;
+	};
+    };
+
     environment.systemPackages = [
       self'.packages.kitty
       pkgs.vscodium
       pkgs.vesktop
+      pkgs.spotatui
     ];
 
     programs.firefox = {
