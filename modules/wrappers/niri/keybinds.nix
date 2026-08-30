@@ -11,7 +11,6 @@
     settings.binds = let
       noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
       ipc = args: [noctalia "msg"] ++ args;
-      terminal = lib.getExe perSystem.self'.packages.terminal;
 
       bind = title: content: _: {
         inherit content;
@@ -51,7 +50,7 @@
         };
 
         "Mod+Return" = norepeat "Terminal" {
-          spawn = [terminal];
+          spawn = [(lib.getExe config.terminal)];
         };
 
         "Mod+D" = norepeat "Launch chords" {
