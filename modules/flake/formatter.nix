@@ -1,6 +1,6 @@
 {inputs, ...}: {
   flake-file.inputs.treefmt-nix = {
-    url = "https://flakehub.com/f/numtide/treefmt-nix/0.1.557";
+    url = "github:numtide/treefmt-nix";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
