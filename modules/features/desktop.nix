@@ -39,11 +39,11 @@
     };
 
     services.spotifyd = {
-    	enable = true;
-	settings = {
-	  backend = "pipe";
-	  bitrate = 320;
-	};
+      enable = true;
+      settings = {
+        backend = "pipe";
+        bitrate = 320;
+      };
     };
 
     environment.systemPackages = [
