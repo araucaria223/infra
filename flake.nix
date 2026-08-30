@@ -39,7 +39,7 @@
     };
     preservation.url = "github:nix-community/preservation";
     treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
+      url = "https://flakehub.com/f/numtide/treefmt-nix/0.1.557";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrapper-modules = {
