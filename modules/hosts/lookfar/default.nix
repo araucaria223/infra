@@ -7,7 +7,6 @@
     modules = [
       inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
       self.modules.generic.library
-      self.modules.nixos.lookfar-hardware
       self.diskoConfigurations.lookfar
 
       self.modules.nixos.araucaria
@@ -31,6 +30,8 @@
           extraRemotes = ["lvfs-testing"];
           uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
         };
+
+	hardware.facter.reportPath = ./facter.json;
 
         system.stateVersion = "26.05";
       })
