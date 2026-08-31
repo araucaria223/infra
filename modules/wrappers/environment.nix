@@ -19,9 +19,9 @@
     });
 
     terminal = moduleWithSystem ({self', ...}: {...}: {
-      imports = [self.wrapperModules.kitty];
+      imports = [self.wrapperModules.foot];
 
-      shell = lib.getExe self'.packages.environment;
+      shell = self'.packages.environment;
     });
 
     environment = moduleWithSystem ({self', ...}: {...}: {
