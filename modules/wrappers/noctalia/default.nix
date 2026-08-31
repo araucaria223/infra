@@ -234,7 +234,7 @@
               "media"
             ];
             center = ["workspaces"];
-            end = ["tray" "group:system-info" "clock"];
+            end = ["tray" "privacy" "group:system-info" "clock"];
           };
         };
 
@@ -249,6 +249,7 @@
           battery.show_label = false;
           brightness.show_label = false;
           volume.show_label = false;
+	  privacy.hide_inactive = true;
 
           control-center.glyph = "adjustments";
 
