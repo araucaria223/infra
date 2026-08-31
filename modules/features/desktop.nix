@@ -47,7 +47,7 @@
     };
 
     environment.systemPackages = [
-      self'.packages.kitty
+      self'.packages.terminal
       pkgs.vscodium
       pkgs.vesktop
       pkgs.spotatui
