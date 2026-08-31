@@ -100,7 +100,6 @@
         shell = {
           launch_apps_as_systemd_services = false;
           niri_overview_type_to_launch_enabled = true;
-          polkit_agent = true;
           setup_wizard_enabled = false;
 
           launcher.compact = true;

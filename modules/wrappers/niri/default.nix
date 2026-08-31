@@ -41,13 +41,19 @@
       noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
       ipc = args: [noctalia "msg"] ++ args;
       mullvad = lib.getExe pkgs.mullvad-vpn;
+      psst = lib.getExe' perSystem.self'.packages.psst-unwrapped;
       #polkit-auth = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
     in {
       xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
       include = "${inputs.niri-animations}/pixelate.kdl";
 
-      spawn-at-startup = [noctalia mullvad];
+      spawn-at-startup = [
+        (psst "psst-keyring-prompter")
+	(psst "psst-polkit-agent")
+        noctalia
+	mullvad
+      ];
 
       hotkey-overlay.skip-at-startup = _: {};
       debug = {
