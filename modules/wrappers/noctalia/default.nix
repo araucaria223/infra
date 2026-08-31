@@ -33,6 +33,8 @@
           };
         };
 
+        audio.enable_sounds = true;
+
         backdrop = {
           enabled = true;
           blur_intensity = 0.5;
