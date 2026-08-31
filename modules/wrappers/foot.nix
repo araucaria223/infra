@@ -13,8 +13,8 @@
 
     options = {
       shell = lib.mkOption {
-        type = lib.types.str;
-	default = "fish";
+        type = lib.types.package;
+	default = pkgs.fish;
       };
 
       theme = lib.mkOption {
@@ -23,7 +23,7 @@
     };
 
     config = {
-      addFlag = lib.mkAfter (lib.optionals (config.shell != "") [config.shell]);
+      addFlag = lib.mkAfter [(lib.getExe config.shell)];
       env."FONTCONFIG_FILE" = let
         customFontconfig = pkgs.makeFontsConf {
           fontDirectories = ["${pkgs.nerd-fonts.jetbrains-mono}"];
@@ -36,7 +36,6 @@
           font = "JetBrainsMono Nerd Font:size=11";
           dpi-aware = "no";
           pad = "15x15 center-when-maximized-and-fullscreen";
-	  shell = config.shell;
         };
 
 	scrollback = {
