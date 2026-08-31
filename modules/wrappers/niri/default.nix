@@ -54,7 +54,7 @@
         (psst "psst-polkit-agent")
         noctalia
         mullvad
-	"${foot} --server"
+	[foot "--server"]
       ];
 
       hotkey-overlay.skip-at-startup = _: {};

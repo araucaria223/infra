@@ -23,7 +23,6 @@
     };
 
     config = {
-      addFlag = lib.mkAfter [(lib.getExe config.shell)];
       env."FONTCONFIG_FILE" = let
         customFontconfig = pkgs.makeFontsConf {
           fontDirectories = ["${pkgs.nerd-fonts.jetbrains-mono}"];
