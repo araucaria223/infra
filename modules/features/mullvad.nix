@@ -4,7 +4,6 @@
       resolved.enable = true;
       mullvad-vpn = {
         enable = true;
-        gui.enable = true;
       };
     };
 
