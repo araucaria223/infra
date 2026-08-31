@@ -50,7 +50,7 @@
         };
 
         "Mod+Return" = norepeat "Terminal" {
-          spawn = [(lib.getExe config.terminal)];
+          spawn = [config.terminal];
         };
 
         "Mod+D" = norepeat "Launch chords" {

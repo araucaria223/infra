@@ -24,8 +24,8 @@
 
     options = {
       terminal = lib.mkOption {
-        type = lib.types.package;
-        default = pkgs.kitty;
+        type = lib.types.str;
+        default = "kitty";
       };
 
       theme = lib.mkOption {
@@ -42,6 +42,7 @@
       ipc = args: [noctalia "msg"] ++ args;
       mullvad = lib.getExe pkgs.mullvad;
       psst = lib.getExe' perSystem.self'.packages.psst;
+      foot = lib.getExe perSystem.self'.packages.terminal;
       #polkit-auth = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
     in {
       xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
@@ -53,6 +54,7 @@
         (psst "psst-polkit-agent")
         noctalia
         mullvad
+	"${foot} --server"
       ];
 
       hotkey-overlay.skip-at-startup = _: {};

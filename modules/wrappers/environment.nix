@@ -7,7 +7,7 @@
   flake.wrappers = {
     desktop = moduleWithSystem ({self', ...}: {pkgs, ...}: {
       imports = [self.wrapperModules.niri];
-      terminal = self'.packages.terminal;
+      terminal = lib.getExe' self'.packages.terminal "footclient";
 
       env = {
         EDITOR = lib.getExe self'.packages.neovim;
