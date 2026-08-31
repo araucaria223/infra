@@ -88,7 +88,7 @@
         ];
 
         files = [
-          ".local/state/noctalia/notification_history.json"
+          { file = ".local/state/noctalia/notification_history.json"; configureParent = true; }
           ".local/state/noctalia/usage_counts.json"
           ".local/state/noctalia/recently_used.json"
         ];
