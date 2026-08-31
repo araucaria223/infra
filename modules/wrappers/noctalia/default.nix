@@ -24,6 +24,7 @@
         };
 
         wallpaper = {
+          directory = "~/Pictures/Wallpapers";
           fill_color = config.theme.palette.base00;
           automation = {
             enabled = true;
