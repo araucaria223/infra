@@ -31,7 +31,7 @@
           uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
         };
 
-	hardware.facter.reportPath = ./facter.json;
+        hardware.facter.reportPath = ./facter.json;
 
         system.stateVersion = "26.05";
       })

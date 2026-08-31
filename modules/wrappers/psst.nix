@@ -20,7 +20,7 @@
         vulkan-loader
         libxkbcommon
         fontconfig
-	systemdLibs
+        systemdLibs
       ];
 
       buildPhase = ''
@@ -30,25 +30,25 @@
       '';
 
       installPhase = ''
-        runHook preInstall
-        mkdir -p $out/bin
+               runHook preInstall
+               mkdir -p $out/bin
 
-	for file in target/release/psst-*; do
-	  if [ -f "$file" ] && [ -x "$file" ]; then
-	    cp "$file" $out/bin/
-	  fi
-	done
-        # Install default theme
-        mkdir -p $out/share/psst
-        cp crates/theme/src/default-theme.kdl $out/share/psst/default-theme.kdl
-        runHook postInstall
+        for file in target/release/psst-*; do
+          if [ -f "$file" ] && [ -x "$file" ]; then
+            cp "$file" $out/bin/
+          fi
+        done
+               # Install default theme
+               mkdir -p $out/share/psst
+               cp crates/theme/src/default-theme.kdl $out/share/psst/default-theme.kdl
+               runHook postInstall
       '';
 
       postFixup = ''
-        libPath="${pkgs.lib.makeLibraryPath buildInputs}"
-	for bin in $out/bin/*; do
-	  wrapProgram "$bin" --set LD_LIBRARY_PATH "$libPath"
-	done
+               libPath="${pkgs.lib.makeLibraryPath buildInputs}"
+        for bin in $out/bin/*; do
+          wrapProgram "$bin" --set LD_LIBRARY_PATH "$libPath"
+        done
       '';
 
       meta = with pkgs.lib; {

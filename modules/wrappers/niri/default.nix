@@ -50,9 +50,9 @@
 
       spawn-at-startup = [
         (psst "psst-keyring-prompter")
-	(psst "psst-polkit-agent")
+        (psst "psst-polkit-agent")
         noctalia
-	mullvad
+        mullvad
       ];
 
       hotkey-overlay.skip-at-startup = _: {};
