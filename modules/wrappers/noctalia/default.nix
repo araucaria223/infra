@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  flake.wrappers.noctalia-v5 = {
+  flake.wrappers.noctalia = {
     pkgs,
     config,
     ...

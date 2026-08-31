@@ -14,7 +14,7 @@
     options = {
       shell = lib.mkOption {
         type = lib.types.package;
-	default = pkgs.fish;
+        default = pkgs.fish;
       };
 
       theme = lib.mkOption {
@@ -37,9 +37,9 @@
           pad = "15x15 center-when-maximized-and-fullscreen";
         };
 
-	scrollback = {
-	  lines = 10000;
-	};
+        scrollback = {
+          lines = 10000;
+        };
 
         colors-dark = with config.theme.paletteNoHash; {
           foreground = base05;
