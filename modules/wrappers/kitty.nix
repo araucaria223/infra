@@ -13,8 +13,8 @@
 
     options = {
       shell = lib.mkOption {
-        type = lib.types.str;
-        default = "";
+        type = lib.types.package;
+        default = pkgs.fish;
       };
       theme = lib.mkOption {
         default = self.theme;
@@ -22,7 +22,7 @@
     };
 
     config = with config.theme; {
-      addFlag = lib.mkAfter (lib.optionals (config.shell != "") [config.shell]);
+      addFlag = lib.mkAfter [(lib.getExe config.shell)];
       env."FONTCONFIG_FILE" = let
         customFontconfig = pkgs.makeFontsConf {
           fontDirectories = ["${pkgs.nerd-fonts.jetbrains-mono}"];
