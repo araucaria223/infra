@@ -9,7 +9,7 @@
     ...
   }: {config, ...}: {
     settings.binds = let
-      noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
+      noctalia = lib.getExe perSystem.self'.packages.noctalia;
       ipc = args: [noctalia "msg"] ++ args;
 
       bind = title: content: _: {

@@ -38,7 +38,7 @@
     ];
 
     config.settings = let
-      noctalia = lib.getExe perSystem.self'.packages.noctalia-v5;
+      noctalia = lib.getExe perSystem.self'.packages.noctalia;
       ipc = args: [noctalia "msg"] ++ args;
       mullvad = lib.getExe pkgs.mullvad;
       psst = lib.getExe' perSystem.self'.packages.psst;
