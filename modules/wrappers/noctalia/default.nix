@@ -188,7 +188,7 @@
               }
             ];
 
-            start = ["clock" "media" "privacy" "tray"];
+            start = ["clock" "media" "tray"];
             center = ["workspaces"];
             end = [
               "group:networking"
@@ -249,7 +249,6 @@
           battery.show_label = false;
           brightness.show_label = false;
           volume.show_label = false;
-	  privacy.hide_inactive = true;
 
           control-center.glyph = "adjustments";
 
