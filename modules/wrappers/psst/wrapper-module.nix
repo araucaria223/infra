@@ -1,11 +1,8 @@
-{
-  lib,
-  moduleWithSystem,
-  ...
-}: {
-  flake.wrappers.psst-wrapper = moduleWithSystem ({self', ...}: {
+{lib, ...}: {
+  flake.wrappers.psst-wrapper = {
     config,
     wlib,
+    pkgs,
     ...
   }: {
     config.meta.platforms = lib.platforms.linux;
@@ -25,7 +22,7 @@
     };
 
     config = {
-      package = lib.mkDefault self'.packages.psst-unwrapped;
+      package = lib.mkDefault (pkgs.callPackage ./_package.nix {});
       wrapperFunction = wlib.makeWrapper.wrapVariants;
 
       wrapperVariants = let
@@ -68,5 +65,5 @@
         };
       };
     };
-  });
+  };
 }
