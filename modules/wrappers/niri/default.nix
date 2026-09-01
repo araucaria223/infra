@@ -45,7 +45,7 @@
       foot = lib.getExe perSystem.self'.packages.terminal;
       #polkit-auth = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
     in {
-      xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+      #xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
       include = "${inputs.niri-animations}/pixelate.kdl";
 
