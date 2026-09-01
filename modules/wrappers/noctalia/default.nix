@@ -1,18 +1,8 @@
-{
-  self,
-  lib,
-  ...
-}: {
-  flake.wrappers.noctalia = {
-    pkgs,
-    config,
-    ...
-  }: {
+{self, ...}: {
+  flake.wrappers.noctalia = {config, ...}: {
     imports = [self.wrapperModules.noctalia-wrapper];
 
-    settings = let
-      systemctl = lib.getExe' pkgs.systemd "systemctl";
-    in {
+    settings = {
       wallpaper = {
         directory = "~/Pictures/Wallpapers";
         fill_color = config.theme.palette.base00;
