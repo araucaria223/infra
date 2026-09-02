@@ -9,7 +9,7 @@
       persist-retro.follows = "";
       disko.follows = "";
       nix-index-database.follows = "";
-      wrapper-module.follows = "wrapper-modules";
+      wrapper-modules.follows = "wrapper-modules";
       hjem.follows = "";
       nix-gaming.follows = "";
       nixpkgs-multiverse.follows = "";

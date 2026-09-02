@@ -39,7 +39,7 @@
         nixpkgs-multiverse.follows = "";
         nixpkgs-stable.follows = "";
         persist-retro.follows = "";
-        wrapper-module.follows = "wrapper-modules";
+        wrapper-modules.follows = "wrapper-modules";
       };
     };
     import-tree.url = "github:vic/import-tree";
