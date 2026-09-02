@@ -9,11 +9,10 @@
   libxkbcommon,
   vulkan-loader,
   systemdLibs,
-  stdenv,
   wayland,
   nix-update-script,
 }:
-rustPlatform.buildRustPackage (finalAttrs: rec {
+rustPlatform.buildRustPackage (finalAttrs: {
   pname = "psst";
   version = "0.2.0";
   __structuredAttrs = true;
@@ -33,20 +32,19 @@ rustPlatform.buildRustPackage (finalAttrs: rec {
     patchelf
   ];
 
-  buildInputs =
-    [
-      fontconfig
-      freetype
-      libxkbcommon
-      vulkan-loader
-      systemdLibs
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      wayland
-    ];
+  buildInputs = [
+    fontconfig
+    freetype
+    libxkbcommon
+    vulkan-loader
+    systemdLibs
+    wayland
+  ];
+
+  doCheck = true;
 
   postFixup = ''
-    libPath="${lib.makeLibraryPath buildInputs}"
+    libPath="${lib.makeLibraryPath finalAttrs.buildInputs}"
     for bin in $out/bin/*; do
       patchelf --set-rpath "$libPath" "$bin"
     done
@@ -62,6 +60,7 @@ rustPlatform.buildRustPackage (finalAttrs: rec {
       gpl3Only
       mpl20
     ];
-    maintainers = [];
+    platforms = lib.platforms.linux;
+    maintainers = [lib.maintainers.araucaria223];
   };
 })
