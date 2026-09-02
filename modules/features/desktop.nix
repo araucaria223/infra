@@ -65,6 +65,7 @@
       stremio-linux-shell
       qbittorrent
       keepassxc
+      element-desktop
     ];
 
     # UPDATEME
