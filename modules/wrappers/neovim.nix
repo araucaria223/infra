@@ -1,4 +1,4 @@
-{inputs, ... }: {
+{inputs, ...}: {
   flake-file.inputs.goxore = {
     url = "github:goxore/nixconf";
     inputs = {
@@ -16,7 +16,7 @@
     };
   };
 
-  flake.wrappers.neovim = {wlib, ...}: {
+  flake.wrappers.neovim = {
     imports = [inputs.goxore.wrapperModules.neovim];
   };
 }
