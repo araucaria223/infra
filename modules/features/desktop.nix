@@ -46,13 +46,6 @@
       };
     };
 
-    environment.systemPackages = [
-      self'.packages.terminal
-      pkgs.vscodium
-      pkgs.vesktop
-      pkgs.spotatui
-    ];
-
     programs.firefox = {
       enable = true;
       package = self'.packages.firefox;
@@ -65,6 +58,10 @@
     };
 
     users.users.araucaria.packages = with pkgs; [
+      self'.packages.terminal
+      vscodium
+      vesktop
+      spotatui
       stremio-linux-shell
       qbittorrent
       keepassxc
