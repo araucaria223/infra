@@ -1,32 +1,20 @@
 {
   self,
-  inputs,
   moduleWithSystem,
   ...
 }: {
   flake.modules.generic.library.library.allowedUnfreePackages = ["stremio-linux-shell"];
 
-  flake-file.inputs.noctalia-greeter = {
-    url = "github:noctalia-dev/noctalia-greeter";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {
     config,
     pkgs,
+    lib,
     ...
   }: {
     imports = [
-      inputs.noctalia-greeter.nixosModules.default
       self.modules.nixos.wireless
       self.modules.nixos.bluetooth
     ];
-
-    programs.noctalia-greeter = {
-      enable = true;
-      package = pkgs.noctalia-greeter;
-      settings.idle.timeout = 300;
-    };
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
@@ -36,6 +24,14 @@
     programs.niri = {
       enable = true;
       package = self'.packages.desktop;
+    };
+
+    services.greetd = {
+      enable = true;
+      settings.default_session = {
+        user = "greeter";
+        command = lib.getExe' pkgs.tuigreet "tuigreet";
+      };
     };
 
     services.spotifyd = {

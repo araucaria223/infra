@@ -435,26 +435,6 @@
         "url": "https://flakehub.com/f/NixOS/nixpkgs/0.1"
       }
     },
-    "noctalia-greeter": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788336398,
-        "narHash": "sha256-1ZdtgBwndNHDltX8J7DLLl2/LBgywQhmt1JNcanfeMA=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-greeter",
-        "rev": "6379fe287bb02b0bb538ad155fe18b1bf8615daf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia-greeter",
-        "type": "github"
-      }
-    },
     "preservation": {
       "locked": {
         "lastModified": 1757436102,
@@ -485,7 +465,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "noctalia-greeter": "noctalia-greeter",
         "preservation": "preservation",
         "treefmt-nix": "treefmt-nix",
         "wrapper-modules": "wrapper-modules"

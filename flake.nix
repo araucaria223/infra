@@ -56,10 +56,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    noctalia-greeter = {
-      url = "github:noctalia-dev/noctalia-greeter";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     preservation.url = "github:nix-community/preservation";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
