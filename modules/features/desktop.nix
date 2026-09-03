@@ -14,6 +14,7 @@
     imports = [
       self.modules.nixos.wireless
       self.modules.nixos.bluetooth
+      self.modules.nixos.prismlauncher
     ];
 
     security.pam.services = {
