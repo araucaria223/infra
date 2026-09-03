@@ -50,11 +50,11 @@
       include = "${inputs.niri-animations}/pixelate.kdl";
 
       spawn-at-startup = [
+        noctalia
         (psst "psst-keyring-prompter")
         (psst "psst-polkit-agent")
-        noctalia
-        mullvad
         [foot "--server"]
+        mullvad
       ];
 
       hotkey-overlay.skip-at-startup = _: {};
