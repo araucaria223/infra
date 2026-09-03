@@ -12,6 +12,7 @@
   flake.modules.nixos.environment = {pkgs, ...}: {
     imports = [
       self.modules.nixos.ssh
+      self.modules.nixos.run0
       inputs.nix-index-database.nixosModules.nix-index
       self.modules.nixos.determinate
     ];
