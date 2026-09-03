@@ -26,13 +26,16 @@
       package = self'.packages.desktop;
     };
 
-    services.greetd = {
+    services.greetd = lib.mkIf (config.specialisation != {}){
       enable = true;
+      useTextGreeter = true;
       settings.default_session = {
         user = "greeter";
         command = lib.getExe' pkgs.tuigreet "tuigreet";
       };
     };
+
+    security.pam.services.login.fprintAuth = false;
 
     services.spotifyd = {
       enable = true;
