@@ -26,7 +26,7 @@
       package = self'.packages.desktop;
     };
 
-    services.greetd = lib.mkIf (config.specialisation != {}){
+    services.greetd = lib.mkIf (config.specialisation != {}) {
       enable = true;
       useTextGreeter = true;
       settings.default_session = {
