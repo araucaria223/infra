@@ -6,7 +6,9 @@
         enable = true;
       };
     };
+  };
 
+  flake.modules.nixos.preservation = {
     preservation.preserveAt."/persistent" = {
       directories = [
         {

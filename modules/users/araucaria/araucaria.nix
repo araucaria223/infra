@@ -1,6 +1,6 @@
 {moduleWithSystem, ...}: {
   flake.modules.nixos.araucaria = moduleWithSystem (
-    {self', ...}: {config, ...}: {
+    {self', ...}: {...}: {
       services.userborn.enable = true;
 
       users = {
@@ -17,7 +17,9 @@
           ];
         };
       };
+    });
 
+    flake.modules.nixos.preservation = {config, ...}: {
       preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name} = {
         commonMountOptions = ["x-gvfs-hide"];
         directories = [
@@ -57,6 +59,5 @@
           }
         ];
       };
-    }
-  );
+    };
 }
