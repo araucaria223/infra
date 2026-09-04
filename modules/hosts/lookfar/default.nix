@@ -15,11 +15,12 @@
       self.modules.nixos.unfree
       self.modules.nixos.zram
       self.modules.nixos.desktop
+      self.modules.nixos.desktop-extra
       self.modules.nixos.limine
       self.modules.nixos.plymouth
-      self.modules.nixos.steam
 
-      ({pkgs, ...}: {
+
+      ({pkgs, config, lib, ...}: {
         networking.hostName = "lookfar";
         time.timeZone = "Europe/London";
         i18n.defaultLocale = "en_GB.UTF-8";
@@ -32,6 +33,15 @@
         };
 
         hardware.facter.reportPath = ./facter.json;
+
+        services.greetd = lib.mkIf (config.specialisation != {}) {
+          enable = true;
+          useTextGreeter = true;
+          settings.default_session = {
+            user = "greeter";
+            command = lib.getExe' pkgs.tuigreet "tuigreet";
+          };
+        };
 
         system.stateVersion = "26.05";
       })
