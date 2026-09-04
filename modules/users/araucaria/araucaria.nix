@@ -17,47 +17,48 @@
           ];
         };
       };
-    });
+    }
+  );
 
-    flake.modules.nixos.preservation = {config, ...}: {
-      preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name} = {
-        commonMountOptions = ["x-gvfs-hide"];
-        directories = [
-          # XDG User Directories
-          "Desktop"
-          "Documents"
-          "Downloads"
-          "Music"
-          "Pictures"
-          "Projects"
-          "Public"
-          "Templates"
-          "Videos"
+  flake.modules.nixos.preservation = {config, ...}: {
+    preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name} = {
+      commonMountOptions = ["x-gvfs-hide"];
+      directories = [
+        # XDG User Directories
+        "Desktop"
+        "Documents"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Projects"
+        "Public"
+        "Templates"
+        "Videos"
 
-          {
-            directory = ".ssh";
-            mode = "0700";
-          }
-          {
-            directory = ".config/mozilla";
-            configureParent = true;
-            parent = {
-              user = config.users.users.araucaria.name;
-              group = "users";
-              mode = "0755";
-            };
-          }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
+        {
+          directory = ".config/mozilla";
+          configureParent = true;
+          parent = {
+            user = config.users.users.araucaria.name;
+            group = "users";
+            mode = "0755";
+          };
+        }
 
-          {
-            directory = ".local/share/keyrings";
-            configureParent = true;
-            parent = {
-              user = config.users.users.araucaria.name;
-              group = "users";
-              mode = "0755";
-            };
-          }
-        ];
-      };
+        {
+          directory = ".local/share/keyrings";
+          configureParent = true;
+          parent = {
+            user = config.users.users.araucaria.name;
+            group = "users";
+            mode = "0755";
+          };
+        }
+      ];
     };
+  };
 }

@@ -5,10 +5,7 @@
 }: {
   flake.modules.generic.library.library.allowedUnfreePackages = ["stremio-linux-shell"];
 
-  flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {
-    pkgs,
-    ...
-  }: {
+  flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {pkgs, ...}: {
     imports = [
       self.modules.nixos.wireless
       self.modules.nixos.bluetooth
@@ -54,9 +51,9 @@
       XCURSOR_SIZE = "20";
       XCURSOR_PATH = ["${pkgs.phinger-cursors}/share/icons"];
     };
-});
+  });
 
-flake.modules.nixos.preservation = {config, ...}: {
+  flake.modules.nixos.preservation = {config, ...}: {
     preservation.preserveAt."/persistent" = {
       directories = [
         {
