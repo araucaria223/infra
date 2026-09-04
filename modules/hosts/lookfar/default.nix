@@ -18,6 +18,7 @@
       self.modules.nixos.desktop-extra
       self.modules.nixos.limine
       self.modules.nixos.plymouth
+      self.modules.nixos.kernel
 
       ({
         pkgs,
@@ -29,7 +30,6 @@
         time.timeZone = "Europe/London";
         i18n.defaultLocale = "en_GB.UTF-8";
 
-        boot.kernelPackages = pkgs.linuxPackages_latest;
         services.fwupd = {
           enable = true;
           extraRemotes = ["lvfs-testing"];
