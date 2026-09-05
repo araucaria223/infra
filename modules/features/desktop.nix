@@ -29,11 +29,11 @@
       base07
     ];
 
-    qt = {
-      enable = true;
-      platformTheme = "gtk2";
-      style = "gtk2";
-    };
+   # qt = {
+   #   enable = true;
+   #   platformTheme = "gtk2";
+   #   style = "gtk2";
+   # };
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
@@ -58,6 +58,10 @@
       power-profiles-daemon.enable = true;
       libinput.enable = true;
     };
+
+    environment.systemPackages = [
+      pkgs.qt6Packages.qtwayland
+    ];
 
     users.users.araucaria.packages = with pkgs; [
       self'.packages.terminal
