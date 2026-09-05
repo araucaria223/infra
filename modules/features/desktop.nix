@@ -75,6 +75,8 @@
       XCURSOR_THEME = "${pkgs.phinger-cursors}/share/icons/phinger-cursors-dark";
       XCURSOR_SIZE = "20";
       XCURSOR_PATH = ["${pkgs.phinger-cursors}/share/icons"];
+
+      NIXOS_OZONE_WL = "1";
     };
   });
 
