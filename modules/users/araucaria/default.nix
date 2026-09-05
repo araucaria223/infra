@@ -6,7 +6,7 @@
       users = {
         mutableUsers = false;
         users.araucaria = {
-	  uid = 1000;
+          uid = 1000;
           isNormalUser = true;
           initialPassword = "password1";
           hashedPasswordFile = "/persistent/passwd";

@@ -1,6 +1,8 @@
 {
   flake.modules.nixos.prismlauncher = {pkgs, ...}: {
-    users.users.araucaria.packages = [pkgs.prismlauncher];
+    users.users.araucaria.packages = [
+      pkgs.prismlauncher
+    ];
   };
 
   flake.modules.nixos.preservation = {config, ...}: {

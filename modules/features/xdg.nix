@@ -1,5 +1,9 @@
 {
-  flake.modules.nixos.xdg = {pkgs, lib, ...}: {
+  flake.modules.nixos.xdg = {
+    pkgs,
+    lib,
+    ...
+  }: {
     environment.etc."xdg/user-dirs.defaults".text = ''
       DESKTOP=.
       TEMPLATES=.
@@ -17,11 +21,11 @@
       wantedBy = ["graphical-session-pre.target"];
       unitConfig = {
         ConditionUser = "!@system";
-	RequiresMountsFor = "/home";
+        RequiresMountsFor = "/home";
       };
       serviceConfig = {
         Type = "oneshot";
-	ExecStart = lib.getExe' pkgs.xdg-user-dirs "xdg-user-dirs-update";
+        ExecStart = lib.getExe' pkgs.xdg-user-dirs "xdg-user-dirs-update";
       };
     };
   };
