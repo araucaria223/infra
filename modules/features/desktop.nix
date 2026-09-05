@@ -9,6 +9,31 @@
       self.modules.nixos.bluetooth
     ];
 
+    console.colors = with self.theme.paletteNoHash; [
+      base00
+      base08
+      base0B
+      base0A
+      base0D
+      base0E
+      base0C
+      base05
+      base03
+      base08
+      base0B
+      base0A
+      base0D
+      base0E
+      base0C
+      base07
+    ];
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk2";
+      style = "gtk2";
+    };
+
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
       login.enableGnomeKeyring = true;
