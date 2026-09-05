@@ -4,7 +4,7 @@
 
     settings = {
       wallpaper = {
-        directory = "~/Pictures/Wallpapers";
+        directory = "~/Media/Pictures/Wallpapers";
         fill_color = config.theme.palette.base00;
         automation = {
           enabled = true;
