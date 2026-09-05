@@ -3,7 +3,6 @@
   moduleWithSystem,
   ...
 }: {
-
   flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {pkgs, ...}: {
     imports = [
       self.modules.nixos.wireless

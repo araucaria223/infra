@@ -1,5 +1,9 @@
 {
-  flake.wrappers.mpv = {wlib, pkgs, ...}: {
+  flake.wrappers.mpv = {
+    wlib,
+    pkgs,
+    ...
+  }: {
     imports = [wlib.wrapperModules.mpv];
 
     script = with pkgs; {

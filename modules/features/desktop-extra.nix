@@ -1,10 +1,14 @@
-{self, moduleWithSystem, ...}: {
+{
+  self,
+  moduleWithSystem,
+  ...
+}: {
   flake.modules.generic.library.library.allowedUnfreePackages = [
     "stremio-server"
     "stremio-service"
   ];
 
-  flake.modules.nixos.desktop-extra = moduleWithSystem({self', ...}: {pkgs, ...}: {
+  flake.modules.nixos.desktop-extra = moduleWithSystem ({self', ...}: {pkgs, ...}: {
     imports = [
       self.modules.nixos.spotify
       self.modules.nixos.prismlauncher
