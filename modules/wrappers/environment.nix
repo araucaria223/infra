@@ -10,7 +10,7 @@
       terminal = lib.getExe' self'.packages.terminal "footclient";
 
       env = {
-        EDITOR = lib.getExe self'.packages.neovim;
+        EDITOR = lib.getExe pkgs.neovim;
       };
 
       runtimePkgs = [
@@ -24,7 +24,7 @@
       shell = self'.packages.environment;
     });
 
-    environment = moduleWithSystem ({self', ...}: {...}: {
+    environment = moduleWithSystem ({self', ...}: {pkgs, ...}: {
       imports = [self.wrapperModules.fish];
 
       runtimePkgs = [
@@ -34,7 +34,7 @@
 
       env = {
         # CHANGE
-        EDITOR = lib.getExe self'.packages.neovim;
+        EDITOR = lib.getExe pkgs.neovim;
       };
     });
   };
