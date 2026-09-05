@@ -11,10 +11,7 @@
 in {
   flake-file.inputs.basix = {
     url = "github:notashelf/basix";
-    inputs = {
-      nixpkgs.follows = "nixpkgs";
-      flake-parts.follows = "flake-parts";
-    };
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   flake.theme = mkTheme "everforest";
