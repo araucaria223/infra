@@ -3,7 +3,6 @@
   moduleWithSystem,
   ...
 }: {
-  flake.modules.generic.library.library.allowedUnfreePackages = ["stremio-linux-shell"];
 
   flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {pkgs, ...}: {
     imports = [

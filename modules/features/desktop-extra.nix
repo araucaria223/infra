@@ -1,4 +1,9 @@
 {self, ...}: {
+  flake.modules.generic.library.library.allowedUnfreePackages = [
+    "stremio-server"
+    "stremio-service"
+  ];
+
   flake.modules.nixos.desktop-extra = {pkgs, ...}: {
     imports = [
       self.modules.nixos.spotify
@@ -9,8 +14,8 @@
     users.users.araucaria.packages = with pkgs; [
       vscodium
       vesktop
-      stremio-linux-shell
       element-desktop
+      stremio-service
     ];
   };
 }
