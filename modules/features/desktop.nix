@@ -5,6 +5,7 @@
 }: {
   flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {pkgs, ...}: {
     imports = [
+      self.modules.nixos.xdg
       self.modules.nixos.wireless
       self.modules.nixos.bluetooth
     ];

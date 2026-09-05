@@ -24,17 +24,6 @@
     preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name} = {
       commonMountOptions = ["x-gvfs-hide"];
       directories = [
-        # XDG User Directories
-        "Desktop"
-        "Documents"
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Projects"
-        "Public"
-        "Templates"
-        "Videos"
-
         {
           directory = ".ssh";
           mode = "0700";
