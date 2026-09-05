@@ -23,22 +23,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    goxore = {
-      url = "github:goxore/nixconf";
-      inputs = {
-        disko.follows = "";
-        flake-parts.follows = "flake-parts";
-        hjem.follows = "";
-        impermanence.follows = "";
-        nix-gaming.follows = "";
-        nix-index-database.follows = "";
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-multiverse.follows = "";
-        nixpkgs-stable.follows = "";
-        persist-retro.follows = "";
-        wrapper-modules.follows = "wrapper-modules";
-      };
-    };
     import-tree.url = "github:vic/import-tree";
     niri-animations = {
       url = "github:jgarza9788/niri-animation-collection?dir=animations";

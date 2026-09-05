@@ -264,40 +264,6 @@
         "url": "https://flakehub.com/f/cachix/git-hooks.nix/0.1.941"
       }
     },
-    "goxore": {
-      "inputs": {
-        "disko": [],
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "hjem": [],
-        "impermanence": [],
-        "nix-gaming": [],
-        "nix-index-database": [],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-multiverse": [],
-        "nixpkgs-stable": [],
-        "persist-retro": [],
-        "wrapper-modules": [
-          "wrapper-modules"
-        ]
-      },
-      "locked": {
-        "lastModified": 1787084769,
-        "narHash": "sha256-r/OzVhvlbpqwGt7qccuZlrMVQDZxxExXK5EfgMfL4fw=",
-        "owner": "goxore",
-        "repo": "nixconf",
-        "rev": "eb94bb6ddd57f7a9a10ca5a7abda2e30288ff3ab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "goxore",
-        "repo": "nixconf",
-        "type": "github"
-      }
-    },
     "import-tree": {
       "locked": {
         "lastModified": 1788467110,
@@ -542,7 +508,6 @@
         "flake-compat": [],
         "flake-file": "flake-file",
         "flake-parts": "flake-parts_2",
-        "goxore": "goxore",
         "import-tree": "import-tree",
         "niri-animations": "niri-animations",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
