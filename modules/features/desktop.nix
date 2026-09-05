@@ -36,15 +36,16 @@
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
-      login.enableGnomeKeyring = true;
+      login = {
+        enableGnomeKeyring = true;
+        fprintAuth = false;
+      };
     };
 
     programs.niri = {
       enable = true;
       package = self'.packages.desktop;
     };
-
-    security.pam.services.login.fprintAuth = false;
 
     programs.firefox = {
       enable = true;
