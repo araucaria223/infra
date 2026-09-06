@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.nixbuild = {
+  den.aspects.nixbuild.nixos = {
     programs.ssh.extraConfig = ''
       Host eu.nixbuild.net
       PubkeyAcceptedKeyTypes ssh-ed25519

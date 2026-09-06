@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.spotify = {pkgs, ...}: {
+  den.aspects.spotify.nixos = {pkgs, ...}: {
     services.spotifyd = {
       enable = true;
       settings = {

@@ -1,11 +1,11 @@
 {
-  flake.modules.nixos.prismlauncher = {pkgs, ...}: {
+  den.aspects.prismlauncher.nixos = {pkgs, ...}: {
     users.users.araucaria.packages = [
       pkgs.prismlauncher
     ];
   };
 
-  flake.modules.nixos.preservation = {config, ...}: {
+  den.aspects.preservation.nixos = {config, ...}: {
     preservation.preserveAt."/persistent" = {
       users.${config.users.users.araucaria.name}.directories = [
         ".local/share/PrismLauncher"

@@ -1,5 +1,5 @@
 {
-  self,
+  den,
   inputs,
   lib,
   ...
@@ -9,12 +9,15 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  flake.modules.nixos.environment = {pkgs, ...}: {
+  den.aspects.environment.includes = [
+    den.aspects.ssh
+    den.aspects.run0
+    den.aspects.determinate
+  ];
+
+  den.aspects.environment.nixos = {pkgs, ...}: {
     imports = [
-      self.modules.nixos.ssh
-      self.modules.nixos.run0
       inputs.nix-index-database.nixosModules.nix-index
-      self.modules.nixos.determinate
     ];
 
     programs.nix-index-database.comma.enable = true;

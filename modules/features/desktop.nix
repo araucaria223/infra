@@ -1,15 +1,16 @@
 {
   self,
+  den,
   moduleWithSystem,
   ...
 }: {
-  flake.modules.nixos.desktop = moduleWithSystem ({self', ...}: {pkgs, ...}: {
-    imports = [
-      self.modules.nixos.xdg
-      self.modules.nixos.wireless
-      self.modules.nixos.bluetooth
-    ];
+  den.aspects.desktop.includes = [
+    den.aspects.xdg
+    den.aspects.wireless
+    den.aspects.bluetooth
+  ];
 
+  den.aspects.desktop.nixos = moduleWithSystem ({self', ...}: {pkgs, ...}: {
     console.colors = with self.theme.paletteNoHash; [
       base00
       base08
@@ -29,11 +30,11 @@
       base07
     ];
 
-   # qt = {
-   #   enable = true;
-   #   platformTheme = "gtk2";
-   #   style = "gtk2";
-   # };
+    # qt = {
+    #   enable = true;
+    #   platformTheme = "gtk2";
+    #   style = "gtk2";
+    # };
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
@@ -84,7 +85,7 @@
     };
   });
 
-  flake.modules.nixos.preservation = {config, ...}: {
+  den.aspects.preservation.nixos = {config, ...}: {
     preservation.preserveAt."/persistent" = {
       directories = [
         {

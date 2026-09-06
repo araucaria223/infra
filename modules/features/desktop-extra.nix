@@ -1,5 +1,5 @@
 {
-  self,
+  den,
   moduleWithSystem,
   ...
 }: {
@@ -8,13 +8,13 @@
     "stremio-service"
   ];
 
-  flake.modules.nixos.desktop-extra = moduleWithSystem ({self', ...}: {pkgs, ...}: {
-    imports = [
-      self.modules.nixos.spotify
-      self.modules.nixos.prismlauncher
-      self.modules.nixos.steam
-    ];
+  den.aspects.desktop-extra.includes = [
+    den.aspects.spotify
+    den.aspects.prismlauncher
+    den.aspects.steam
+  ];
 
+  den.aspects.desktop-extra.nixos = moduleWithSystem ({self', ...}: {pkgs, ...}: {
     users.users.araucaria.packages = with pkgs; [
       vscodium
       vesktop

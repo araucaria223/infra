@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.xdg = {
+  den.aspects.xdg.nixos = {
     pkgs,
     lib,
     ...
@@ -30,7 +30,7 @@
     };
   };
 
-  flake.modules.nixos.preservation = {config, ...}: {
+  den.aspects.preservation.nixos = {config, ...}: {
     preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name}.directories = [
       "Documents"
       "Downloads"

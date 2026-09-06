@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.modules.nixos.limine = {pkgs, ...}: {
+  den.aspects.limine.nixos = {pkgs, ...}: {
     boot.loader.limine = {
       enable = true;
       secureBoot.enable = true;
@@ -21,7 +21,7 @@
     environment.systemPackages = [pkgs.sbctl];
   };
 
-  flake.modules.nixos.preservation = {
+  den.aspects.preservation.nixos = {
     preservation.preserveAt."/persistent".directories = [
       "/var/lib/sbctl"
     ];

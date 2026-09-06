@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.mullvad-vpn = {
+  den.aspects.mullvad-vpn.nixos = {
     services = {
       resolved.enable = true;
       mullvad-vpn = {
@@ -8,7 +8,7 @@
     };
   };
 
-  flake.modules.nixos.preservation = {
+  den.aspects.preservation.nixos = {
     preservation.preserveAt."/persistent" = {
       directories = [
         {

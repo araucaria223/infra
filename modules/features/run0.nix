@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.run0 = {
+  den.aspects.run0.nixos = {
     security = {
       sudo.enable = false;
       run0 = {

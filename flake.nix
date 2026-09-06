@@ -8,6 +8,7 @@
       url = "github:notashelf/basix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    den.url = "github:denful/den";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     disko = {
       url = "github:nix-community/disko";
@@ -22,6 +23,22 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    goxore = {
+      url = "github:goxore/nixconf";
+      inputs = {
+        disko.follows = "";
+        flake-parts.follows = "flake-parts";
+        hjem.follows = "";
+        impermanence.follows = "";
+        nix-gaming.follows = "";
+        nix-index-database.follows = "";
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-multiverse.follows = "";
+        nixpkgs-stable.follows = "";
+        persist-retro.follows = "";
+        wrapper-modules.follows = "wrapper-modules";
+      };
     };
     import-tree.url = "github:vic/import-tree";
     niri-animations = {

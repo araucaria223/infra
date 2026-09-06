@@ -1,27 +1,36 @@
 {
   self,
   inputs,
+  den,
   moduleWithSystem,
   ...
 }: {
-  flake.nixosConfigurations.iso-image = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [
-      (inputs.nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
-      self.modules.generic.library
+  den.hosts.x86_64-linux.iso-image = {
+    hostName = "live";
+    users.araucaria = {};
+  };
 
-      self.modules.nixos.environment
-      self.modules.nixos.zram
-      self.modules.nixos.desktop
-      self.modules.nixos.araucaria
+  den.aspects.iso-image = {
+    includes = [
+      den.batteries.hostname
 
-      (moduleWithSystem ({self', ...}: {
+      den.aspects.environment
+      den.aspects.zram
+      den.aspects.desktop
+    ];
+
+    nixos = moduleWithSystem (
+      {self', ...}: {
         pkgs,
         config,
         lib,
         ...
       }: {
-        networking.hostName = "live";
+        imports = [
+          (inputs.nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+          self.modules.generic.library
+        ];
+
         users.users.nixos.enable = false;
         time.timeZone = "Europe/London";
         i18n.defaultLocale = "en_GB.UTF-8";
@@ -37,7 +46,7 @@
             command = lib.getExe self'.packages.desktop;
           };
         };
-      }))
-    ];
+      }
+    );
   };
 }

@@ -1,7 +1,7 @@
 {moduleWithSystem, ...}: {
   flake-file.inputs.nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
-  flake.modules.nixos.kernel = moduleWithSystem ({inputs', ...}: {...}: {
+  den.aspects.kernel.nixos = moduleWithSystem ({inputs', ...}: {...}: {
     nix.settings = {
       substituters = ["https://attic.xuyh0120.win/lantian"];
       trusted-public-keys = ["lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="];

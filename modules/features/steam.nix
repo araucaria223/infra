@@ -4,14 +4,14 @@
     "steam-unwrapped"
   ];
 
-  flake.modules.nixos.preservation = {config, ...}: {
+  den.aspects.preservation.nixos = {config, ...}: {
     preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name}.directories = [
       ".steam"
       ".local/share/Steam"
     ];
   };
 
-  flake.modules.nixos.steam = {
+  den.aspects.steam.nixos = {
     pkgs,
     config,
     lib,

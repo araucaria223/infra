@@ -18,7 +18,7 @@
     };
   };
 
-  flake.modules.nixos.unfree = {config, ...}: {
+  den.aspects.unfree.nixos = {config, ...}: {
     nixpkgs.pkgs = withSystem config.nixpkgs.hostPlatform.system (
       {pkgs, ...}: pkgs
     );

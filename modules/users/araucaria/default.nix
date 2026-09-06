@@ -1,26 +1,35 @@
-{moduleWithSystem, ...}: {
-  flake.modules.nixos.araucaria = moduleWithSystem (
-    {self', ...}: {...}: {
-      services.userborn.enable = true;
+{
+  den,
+  moduleWithSystem,
+  ...
+}: {
+  den.aspects.araucaria = {
+    includes = [
+      den.batteries.define-user
+    ];
 
-      users = {
-        mutableUsers = false;
-        users.araucaria = {
-          uid = 1000;
-          isNormalUser = true;
-          initialPassword = "password1";
-          hashedPasswordFile = "/persistent/passwd";
-          extraGroups = ["wheel"];
-          shell = self'.packages.environment;
-          openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTNS3bsK/k/svOc8YCIvahRTOViOZXEcUX3ctgWlxGa max.allfrey@gmail.com"
-          ];
+    nixos = moduleWithSystem (
+      {self', ...}: {...}: {
+        services.userborn.enable = true;
+
+        users = {
+          mutableUsers = false;
+          users.araucaria = {
+            uid = 1000;
+            initialPassword = "password1";
+            hashedPasswordFile = "/persistent/passwd";
+            extraGroups = ["wheel"];
+            shell = self'.packages.environment;
+            openssh.authorizedKeys.keys = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTNS3bsK/k/svOc8YCIvahRTOViOZXEcUX3ctgWlxGa max.allfrey@gmail.com"
+            ];
+          };
         };
-      };
-    }
-  );
+      }
+    );
+  };
 
-  flake.modules.nixos.preservation = {config, ...}: {
+  den.aspects.preservation.nixos = {config, ...}: {
     preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name} = {
       commonMountOptions = ["x-gvfs-hide"];
       directories = [

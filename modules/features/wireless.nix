@@ -1,8 +1,9 @@
-{self, ...}: {
-  flake.modules.nixos.wireless = {
-    imports = [
-      self.modules.nixos.mullvad-vpn
-    ];
+{den, ...}: {
+  den.aspects.wireless.includes = [
+    den.aspects.mullvad-vpn
+  ];
+
+  den.aspects.wireless.nixos = {
     networking.networkmanager = {
       enable = true;
       wifi.powersave = true;
@@ -11,7 +12,7 @@
     users.users.araucaria.extraGroups = ["networkmanager"];
   };
 
-  flake.modules.nixos.preservation = {
+  den.aspects.preservation.nixos = {
     preservation.preserveAt."/persistent".directories = [
       "/etc/NetworkManager/system-connections"
     ];
