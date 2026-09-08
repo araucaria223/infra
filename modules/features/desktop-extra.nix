@@ -23,4 +23,10 @@
       self'.packages.mpv
     ];
   });
+
+  flake.modules.nixos.preservation = {config, ...}: {
+    preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name}.directories = [
+      ".config/VSCodium"
+    ];
+  };
 }
