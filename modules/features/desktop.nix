@@ -29,11 +29,11 @@
       base07
     ];
 
-   # qt = {
-   #   enable = true;
-   #   platformTheme = "gtk2";
-   #   style = "gtk2";
-   # };
+    # qt = {
+    #   enable = true;
+    #   platformTheme = "gtk2";
+    #   style = "gtk2";
+    # };
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
