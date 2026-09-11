@@ -8,6 +8,6 @@
     };
 
     boot.kernelPackages =
-      inputs'.nix-cachyos-kernel.legacyPackages.linuxPackages-cachyos-bore-lto-x86_64-v4;
+      inputs'.nix-cachyos-kernel.legacyPackages.linuxPackages-cachyos-bore-lto-x86_64-v3;
   });
 }
