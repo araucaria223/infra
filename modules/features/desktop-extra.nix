@@ -6,6 +6,7 @@
   flake.modules.generic.library.library.allowedUnfreePackages = [
     "stremio-server"
     "stremio-service"
+    "obsidian"
   ];
 
   flake.modules.nixos.desktop-extra = moduleWithSystem ({self', ...}: {pkgs, ...}: {
@@ -21,12 +22,14 @@
       element-desktop
       stremio-service
       self'.packages.mpv
+      obsidian
     ];
   });
 
   flake.modules.nixos.preservation = {config, ...}: {
     preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name}.directories = [
       ".config/VSCodium"
+      ".config/obsidian"
     ];
   };
 }
