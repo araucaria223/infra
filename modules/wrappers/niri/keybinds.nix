@@ -116,6 +116,9 @@
         "Mod+Q" = norepeat "Close window" {
           close-window = _: {};
         };
+	"Mod+T" = norepeat "Toggle floating" {
+	  toggle-window-floating = _: {};
+	};
         "Mod+F" = norepeat "Fullscreen window" {
           fullscreen-window = _: {};
         };
