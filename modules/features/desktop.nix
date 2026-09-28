@@ -8,6 +8,7 @@
       self.modules.nixos.xdg
       self.modules.nixos.wireless
       self.modules.nixos.bluetooth
+      self.modules.nixos.syncthing
     ];
 
     console.colors = with self.theme.paletteNoHash; [
