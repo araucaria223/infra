@@ -7,7 +7,11 @@
     self',
     config,
     ...
-  }: {config, ...}: {
+  }: {
+    config,
+    pkgs,
+    ...
+  }: {
     settings.binds = let
       noctalia = lib.getExe perSystem.self'.packages.noctalia;
       ipc = args: [noctalia "msg"] ++ args;
@@ -53,36 +57,61 @@
           spawn = [config.terminal];
         };
 
+        "Mod+P" = norepeat "Program launcher" {
+          spawn =
+            lib.singleton
+            (perSystem.config.library.mkWhichKeyExe
+              {
+                inherit (config) theme;
+
+                menu = [
+                  {
+                    key = "f";
+                    desc = "Firefox";
+                    cmd = lib.getExe perSystem.self'.packages.firefox;
+                  }
+                  {
+                    key = "p";
+                    desc = "KeePassXC";
+                    cmd = lib.getExe pkgs.keepassxc;
+                  }
+                ];
+              });
+        };
+
         "Mod+D" = norepeat "Launch chords" {
-          spawn-sh = perSystem.config.library.mkWhichKeyExe {
-            inherit (config) theme;
-
-            menu = [
+          spawn =
+            lib.singleton
+            (perSystem.config.library.mkWhichKeyExe
               {
-                key = "b";
-                desc = "Bluetooth";
-                cmd = "${noctalia} msg panel-toggle control-center bluetooth";
-              }
+                inherit (config) theme;
 
-              {
-                key = "w";
-                desc = "Wifi";
-                cmd = "${noctalia} msg panel-toggle control-center network";
-              }
+                menu = [
+                  {
+                    key = "b";
+                    desc = "Bluetooth";
+                    cmd = "${noctalia} msg panel-toggle control-center bluetooth";
+                  }
 
-              {
-                key = "W";
-                desc = "Wallhaven";
-                cmd = "${noctalia} msg panel-toggle noctalia/wallhaven:browser";
-              }
+                  {
+                    key = "w";
+                    desc = "Wifi";
+                    cmd = "${noctalia} msg panel-toggle control-center network";
+                  }
 
-              {
-                key = "f";
-                desc = "Firefox";
-                cmd = lib.getExe perSystem.self'.packages.firefox;
-              }
-            ];
-          };
+                  {
+                    key = "n";
+                    desc = "Notifications";
+                    cmd = "${noctalia} msg panel-toggle control-center notifications";
+                  }
+
+                  {
+                    key = "c";
+                    desc = "Calendar";
+                    cmd = "${noctalia} msg panel-toggle control-center calendar";
+                  }
+                ];
+              });
         };
 
         "Mod+Shift+L" = norepeat "Lock screen" {
@@ -116,9 +145,9 @@
         "Mod+Q" = norepeat "Close window" {
           close-window = _: {};
         };
-	"Mod+T" = norepeat "Toggle floating" {
-	  toggle-window-floating = _: {};
-	};
+        "Mod+T" = norepeat "Toggle floating" {
+          toggle-window-floating = _: {};
+        };
         "Mod+F" = norepeat "Fullscreen window" {
           fullscreen-window = _: {};
         };

@@ -112,12 +112,12 @@
           default-column-width = {fixed = 1080;};
           default-window-height = {fixed = 920;};
         }
-	{
-	  matches = [
-	    {app-id = "org.keepassxc.KeePassXC";}
-	  ];
-	  open-floating = true;
-	}
+        {
+          matches = [
+            {app-id = "org.keepassxc.KeePassXC";}
+          ];
+          open-floating = true;
+        }
       ];
 
       layer-rules = [
