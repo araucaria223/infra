@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790675877,
-        "narHash": "sha256-7nYaRVU4LayhgkXggyfWHVGao93OxezlhnZvxP8sQws=",
+        "lastModified": 1791018085,
+        "narHash": "sha256-housjVTjhgLBWUlJPR1ox4tRk0l2XjH1LqJCGsRrX4I=",
         "owner": "notashelf",
         "repo": "basix",
-        "rev": "58f6fbe4434380794eacc1f34cb8a2fae1c5d1d6",
+        "rev": "a0533460f08ecc0f06126b2540e5502ad2c92256",
         "type": "github"
       },
       "original": {
@@ -123,11 +123,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1790913743,
-        "narHash": "sha256-2dSW/+UbvXUSyIhsKVVNqCYu3eGKlqhPa75a8zD27bw=",
+        "lastModified": 1791000335,
+        "narHash": "sha256-mYqpWXgNhjYObSsJRFixNyuJqs2cx3pq8F3SFdjYGng=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "50e98bb0f5c5e7fddb26c26b044f0f363f53584c",
+        "rev": "c87d80e0b94fc5fa8bd4e906a65379a0d87fc07b",
         "type": "gitlab"
       },
       "original": {
