@@ -14,6 +14,7 @@
       self.modules.nixos.spotify
       self.modules.nixos.prismlauncher
       self.modules.nixos.steam
+      self.modules.nixos.searxng
     ];
 
     users.users.araucaria.packages = with pkgs; [
