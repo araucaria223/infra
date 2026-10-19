@@ -15,6 +15,7 @@
       self.modules.nixos.prismlauncher
       self.modules.nixos.steam
       self.modules.nixos.searxng
+      self.modules.nixos.libron
     ];
 
     users.users.araucaria.packages = with pkgs; [
@@ -25,6 +26,8 @@
       self'.packages.mpv
       obsidian
     ];
+
+    fonts.packages = [pkgs.julia-mono];
   });
 
   flake.modules.nixos.preservation = {config, ...}: {
