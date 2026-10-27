@@ -4,7 +4,6 @@
   installFonts,
   lib,
 }:
-
 stdenvNoCC.mkDerivation rec {
   pname = "libron";
   version = "0.30";
@@ -18,13 +17,13 @@ stdenvNoCC.mkDerivation rec {
   __structuredAttrs = true;
   strictDeps = true;
 
-  nativeBuildInputs = [ installFonts ];
+  nativeBuildInputs = [installFonts];
 
   meta = {
     description = "A manually tuned font revision of Readerly, optimized for digital reading and e-readers";
     homepage = "https://github.com/nicoverbruggen/libron";
     license = lib.licenses.ofl;
-    maintainers = [ lib.maintainers.frakappa ];
+    maintainers = [lib.maintainers.frakappa];
     platforms = lib.platforms.all;
   };
 }

@@ -19,6 +19,7 @@
       self.modules.nixos.limine
       self.modules.nixos.plymouth
       self.modules.nixos.kernel
+      self.modules.nixos.nixbuild
 
       ({
         pkgs,
@@ -47,10 +48,12 @@
           };
         };
 
-	security.pki.caCertificateBlacklist = [
-	  "Comodo AAA Services root"
-	  "emSign ECC Root CA - G3"
-	];
+        #	security.pki.caCertificateBlacklist = [
+        #	  "Comodo AAA Services root"
+        #	  "emSign ECC Root CA - G3"
+        #	];
+
+        #boot.kernelPackages = pkgs.linuxPackages_latest;
 
         system.stateVersion = "26.05";
       })
