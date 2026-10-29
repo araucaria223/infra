@@ -34,6 +34,8 @@
     preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name}.directories = [
       ".config/VSCodium"
       ".config/obsidian"
+      ".vscode-oss"
+      ".vscode-oss-shared"
     ];
   };
 }
