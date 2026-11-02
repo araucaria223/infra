@@ -37,7 +37,7 @@
       url = "github:nixos/nixos-hardware";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     preservation.url = "github:nix-community/preservation";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
