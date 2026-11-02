@@ -11,20 +11,23 @@
       trusted-public-keys = ["lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ="];
     };
 
-    boot.kernelPackages = let
-      baseKernel = inputs'.nix-cachyos-kernel.legacyPackages.linux-cachyos-bore-lto-x86_64-v3;
+    boot.kernelPackages = inputs'.nix-cachyos-kernel.legacyPackages.linuxPackages-cachyos-bore-lto-x86_64-v3;
+    });
 
-      minimalKernel = baseKernel.overrideAttrs (_oldAttrs: {
-        structuredExtraConfig = with lib.kernel; {
-          DRM_AMDGPU = no;
-          DRM_NOUVEAU = no;
-
-          XFS_FS = no;
-          INFINIBAND = no;
-          HYPERV = no;
-        };
-      });
-    in
-      pkgs.linuxKernel.packagesFor minimalKernel;
-  });
+#    boot.kernelPackages = let
+#      baseKernel = inputs'.nix-cachyos-kernel.legacyPackages.linux-cachyos-bore-lto-x86_64-v3;
+#
+#      minimalKernel = baseKernel.overrideAttrs (_oldAttrs: {
+#        structuredExtraConfig = with lib.kernel; {
+#          DRM_AMDGPU = no;
+#          DRM_NOUVEAU = no;
+#
+#          XFS_FS = no;
+#          INFINIBAND = no;
+#          HYPERV = no;
+#        };
+#      });
+#    in
+#      pkgs.linuxKernel.packagesFor minimalKernel;
+#  });
 }
