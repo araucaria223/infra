@@ -36,6 +36,9 @@
       ".config/obsidian"
       ".vscode-oss"
       ".vscode-oss-shared"
+
+      # Definitely does not go here
+      ".elan"
     ];
   };
 }
