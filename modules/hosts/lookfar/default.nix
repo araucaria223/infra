@@ -19,7 +19,6 @@
       self.modules.nixos.limine
       self.modules.nixos.plymouth
       self.modules.nixos.kernel
-      self.modules.nixos.nixbuild
 
       ({
         pkgs,
