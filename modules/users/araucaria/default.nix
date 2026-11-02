@@ -8,7 +8,6 @@
         users.araucaria = {
           uid = 1000;
           isNormalUser = true;
-          initialPassword = "password1";
           hashedPasswordFile = "/persistent/passwd";
           extraGroups = ["wheel"];
           shell = self'.packages.environment;
