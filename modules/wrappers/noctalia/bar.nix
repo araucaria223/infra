@@ -11,7 +11,7 @@
           members = ["bluetooth" "network"];
           opacity = 1.0;
           padding = 6.0;
-          fill = "surface_variant";
+          fill = "surface_container";
           enabled = true;
         }
 
@@ -20,7 +20,7 @@
           members = ["volume" "brightness" "battery"];
           opacity = 1.0;
           padding = 6.0;
-          fill = "surface_variant";
+          fill = "surface_container";
           enabled = true;
         }
       ];

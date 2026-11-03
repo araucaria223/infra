@@ -27,8 +27,8 @@
         mOnSurface = base05;
         mHover = base0C;
         mOnHover = base00;
-        mSurfaceVariant = base01;
-        mOnSurfaceVariant = base04;
+        mSurfaceContainer = base01;
+        mOnSurfaceContainer = base04;
         mOutline = base03;
         mShadow = base00;
         terminal = {};
