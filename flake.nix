@@ -24,10 +24,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     import-tree.url = "github:denful/import-tree";
-    niri-animations = {
-      url = "github:jgarza9788/niri-animation-collection?dir=animations";
-      flake = false;
-    };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-index-database = {
       url = "github:Mic92/nix-index-database";

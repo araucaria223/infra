@@ -5,11 +5,6 @@
   moduleWithSystem,
   ...
 }: {
-  flake-file.inputs.niri-animations = {
-    url = "github:jgarza9788/niri-animation-collection?dir=animations";
-    flake = false;
-  };
-
   flake.wrappers.niri = moduleWithSystem (perSystem @ {
     self',
     config,
@@ -47,7 +42,7 @@
     in {
       #xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-      include = "${inputs.niri-animations}/pixelate.kdl";
+      include = ./shaders/pixelate.kdl;
 
       spawn-at-startup = [
         noctalia
