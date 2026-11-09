@@ -1,6 +1,6 @@
 {self, ...}: {
-  flake.wrappers.noctalia = {config, ...}: {
-    imports = [self.wrapperModules.noctalia-wrapper];
+  flake.wrappers.noctalia = {config, wlib, ...}: {
+    imports = [wlib.wrapperModules.noctalia];
 
     settings = {
       wallpaper = {

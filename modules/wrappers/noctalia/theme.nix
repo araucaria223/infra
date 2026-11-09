@@ -14,7 +14,7 @@
         custom_palette = config.theme.name;
       };
 
-      customPalettes."${config.theme.name}".dark = with config.theme.palette; {
+      colors = with config.theme.palette; {
         mPrimary = base0D;
         mOnPrimary = base00;
         mSecondary = base0E;
