@@ -58,7 +58,7 @@
         theme = lib.mkIf (config.theme != {}) {
           key = "psstThemeKdl";
           relPath = lib.mkOverride 0 "psst/theme.kdl";
-          content = wlib.toKdl (_: {
+          content = wlib.generators.toKdl (_: {
             version = 1;
             content = [config.theme];
           });
