@@ -6,7 +6,6 @@
   flake.modules.generic.library.library.allowedUnfreePackages = [
     "stremio-server"
     "stremio-service"
-    "obsidian"
   ];
 
   flake.modules.nixos.desktop-extra = moduleWithSystem ({self', ...}: {pkgs, ...}: {
@@ -23,17 +22,14 @@
       vesktop
       element-desktop
       stremio-service
-      self'.packages.mpv
-      obsidian
+      #self'.packages.mpv
+      self'.packages.obsidian
     ];
-
-    fonts.packages = [pkgs.julia-mono];
   });
 
   flake.modules.nixos.preservation = {config, ...}: {
     preservation.preserveAt."/persistent".users.${config.users.users.araucaria.name}.directories = [
       ".config/VSCodium"
-      ".config/obsidian"
       ".vscode-oss"
       ".vscode-oss-shared"
 
